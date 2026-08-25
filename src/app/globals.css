@@ -1,0 +1,109 @@
+@import "tailwindcss";
+
+/*
+ * Design tokens.
+ *
+ * Light is the default declaration; dark overrides only what changes so the two
+ * themes stay in sync. `.dark` is toggled on <html> by next-themes.
+ */
+:root {
+  --background: #fbfcfd;
+  --surface: #ffffff;
+  --surface-raised: #f4f6f8;
+  --foreground: #0b1015;
+  --muted: #55636f;
+  --subtle: #7c8895;
+  --border: #e3e8ee;
+  --accent: #0f766e;
+  --accent-soft: #0f766e14;
+  --on-accent: #ffffff;
+  --ring: #0f766e;
+}
+
+.dark {
+  --background: #0b0f14;
+  --surface: #111820;
+  --surface-raised: #16202a;
+  --foreground: #e6edf3;
+  --muted: #8b98a5;
+  --subtle: #6b7885;
+  --border: #1e2a35;
+  --accent: #2dd4bf;
+  --accent-soft: #2dd4bf1f;
+  --on-accent: #04211d;
+  --ring: #2dd4bf;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-raised: var(--surface-raised);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-subtle: var(--subtle);
+  --color-border: var(--border);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-on-accent: var(--on-accent);
+  --color-ring: var(--ring);
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    /* Keep anchored sections clear of the mobile sticky header. */
+    scroll-padding-top: 5rem;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-feature-settings: "cv11", "ss01";
+    font-variation-settings: normal;
+  }
+
+  /* A single, consistent focus treatment for every interactive element. */
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  ::selection {
+    background-color: var(--accent);
+    color: var(--on-accent);
+  }
+}
+
+@layer utilities {
+  /* Tabular figures keep date ranges from shifting between locales. */
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Honour the OS-level motion preference: no entrance animation, no smooth scroll. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
