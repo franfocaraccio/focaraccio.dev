@@ -51,9 +51,20 @@ names.
 
 ## Assets
 
-- `public/profile.jpg` — profile photo, square, 512×512. To replace it, crop a
-  new square framed on the head and upper chest; the sidebar renders it in a
-  64px circle and falls back to a monogram avatar if the file is missing.
+- `public/portrait.webp` — cut-out portrait with a transparent background,
+  900px wide, faded out towards the bottom edge.
+
+  To regenerate it from a new photo, background removal needs a real
+  segmentation model — colour keying fails because skin tones sit too close to
+  a light wall in LAB space:
+
+  ```bash
+  pip install rembg onnxruntime
+  ```
+
+  Then run `rembg` with the `u2net_human_seg` model and alpha matting, erode the
+  resulting matte a few pixels so the soft edge lands on subject pixels rather
+  than the wall-contaminated rim, and fade the bottom ~20% of the alpha.
 
 ## Deployment
 

@@ -1,5 +1,5 @@
 import { Mail, MapPin, Phone } from "lucide-react";
-import { Avatar } from "@/components/avatar";
+import { Portrait } from "@/components/portrait";
 import { Reveal } from "@/components/reveal";
 import { Section } from "@/components/sections/section";
 import { profile, type Dictionary } from "@/content/cv";
@@ -66,7 +66,7 @@ export function About({ dict }: { dict: Dictionary }) {
 
         {/* Photo leads on narrow screens, sits alongside the copy on wide ones. */}
         <Reveal delay={0.1} className="order-first lg:order-none">
-          <Avatar className="mx-auto size-48 rounded-2xl sm:size-64 lg:size-80" />
+          <Portrait />
         </Reveal>
       </div>
     </Section>

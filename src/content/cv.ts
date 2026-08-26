@@ -8,7 +8,7 @@ export const profile = {
   linkedin: "https://www.linkedin.com/in/ffocaraccio",
   github: "https://github.com/franfocaraccio",
   site: "https://focaraccio.dev",
-  photo: "/profile.jpg",
+  photo: "/portrait.webp",
 } as const;
 
 export type SkillGroup = {
