@@ -5,43 +5,42 @@ import type { Dictionary } from "@/content/cv";
 export function Education({ dict }: { dict: Dictionary }) {
   return (
     <Section id="education" title={dict.sections.education}>
-      <Reveal className="flex flex-col gap-6">
-        <ol className="flex flex-col gap-5">
-          {dict.education.items.map((item) => (
-            <li
-              key={item.degree}
-              className="grid gap-1 sm:grid-cols-[8.5rem_1fr] sm:gap-6 xl:grid-cols-[10rem_1fr] xl:gap-8"
-            >
-              <p className="tabular pt-0.5 font-mono text-xs tracking-wide text-subtle uppercase">
-                {item.period}
-              </p>
-              <div>
-                <h3 className="text-base font-medium">{item.degree}</h3>
-                <p className="mt-0.5 text-sm text-muted">{item.school}</p>
+      <div className="mx-auto grid max-w-5xl gap-10 lg:grid-cols-[1.6fr_1fr] lg:gap-16">
+        <Reveal>
+          <ol className="flex flex-col gap-8">
+            {dict.education.items.map((item) => (
+              <li key={item.degree}>
+                <p className="tabular font-mono text-xs tracking-[0.14em] text-subtle uppercase">
+                  {item.period}
+                </p>
+                <h3 className="mt-2 text-lg font-medium">{item.degree}</h3>
+                <p className="mt-1 text-sm text-muted">{item.school}</p>
                 {item.note ? (
-                  <p className="tabular mt-0.5 font-mono text-xs text-subtle">
+                  <p className="tabular mt-1 font-mono text-xs text-subtle">
                     {item.note}
                   </p>
                 ) : null}
-              </div>
-            </li>
-          ))}
-        </ol>
-
-        <div className="rounded-xl border border-border bg-surface p-5">
-          <h3 className="font-mono text-[0.6875rem] font-semibold tracking-[0.14em] text-subtle uppercase">
-            {dict.education.languagesTitle}
-          </h3>
-          <ul className="mt-3 flex flex-col gap-1.5">
-            {dict.education.languages.map((language) => (
-              <li key={language.name} className="flex items-baseline gap-2 text-sm">
-                <span className="font-medium">{language.name}</span>
-                <span className="text-subtle">— {language.level}</span>
               </li>
             ))}
-          </ul>
-        </div>
-      </Reveal>
+          </ol>
+        </Reveal>
+
+        <Reveal delay={0.1}>
+          <div className="rounded-2xl border border-border bg-surface p-6">
+            <h3 className="font-mono text-[0.6875rem] font-semibold tracking-[0.14em] text-subtle uppercase">
+              {dict.education.languagesTitle}
+            </h3>
+            <ul className="mt-4 flex flex-col gap-3">
+              {dict.education.languages.map((language) => (
+                <li key={language.name}>
+                  <p className="font-medium">{language.name}</p>
+                  <p className="text-sm text-subtle">{language.level}</p>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </Reveal>
+      </div>
     </Section>
   );
 }

@@ -131,18 +131,22 @@ export type Education = {
 
 export type Dictionary = {
   nav: {
+    home: string;
     about: string;
     experience: string;
     projects: string;
     stack: string;
     education: string;
+    contact: string;
   };
   hero: {
     role: string;
     tagline: string;
     location: string;
+    greeting: string;
     resumeCta: string;
     resumeHref: string;
+    secondaryCta: string;
     scrollHint: string;
   };
   sections: {
@@ -180,19 +184,23 @@ export type Dictionary = {
 
 const en: Dictionary = {
   nav: {
+    home: "Home",
     about: "About",
     experience: "Experience",
     projects: "Projects",
     stack: "Tech Stack",
     education: "Education",
+    contact: "Contact",
   },
   hero: {
-    role: "Backend Software Engineer",
+    role: "Software Engineer",
     tagline:
-      "I build APIs and microservices with distributed architectures on the cloud — mostly in .NET, for fintech and banking.",
+      "A backend engineer who grew from writing the code into designing the distributed systems that hold it up, without losing the taste for the first part.",
     location: "Buenos Aires, Argentina",
+    greeting: "Hello,",
     resumeCta: "Download CV",
     resumeHref: "/cv/Francisco-Focaraccio-CV-EN.pdf",
+    secondaryCta: "Know me better",
     scrollHint: "Scroll",
   },
   sections: {
@@ -346,19 +354,23 @@ const en: Dictionary = {
 
 const es: Dictionary = {
   nav: {
+    home: "Inicio",
     about: "Sobre mí",
     experience: "Experiencia",
     projects: "Proyectos",
     stack: "Tecnologías",
     education: "Formación",
+    contact: "Contacto",
   },
   hero: {
-    role: "Ingeniero de Software Backend",
+    role: "Ingeniero de Software",
     tagline:
-      "Construyo APIs y microservicios con arquitecturas distribuidas en la nube — principalmente en .NET, para fintech y banca.",
+      "Ingeniero backend que pasó de escribir código a diseñar los sistemas distribuidos que lo sostienen, sin perderle el gusto a lo primero.",
     location: "Buenos Aires, Argentina",
+    greeting: "Hola,",
     resumeCta: "Descargar CV",
     resumeHref: "/cv/Francisco-Focaraccio-CV-ES.pdf",
+    secondaryCta: "Conocerme mejor",
     scrollHint: "Scroll",
   },
   sections: {

@@ -3,14 +3,21 @@
 import { useEffect, useState } from "react";
 
 /**
- * Tracks which section is currently in view so the sidebar nav can highlight
+ * Tracks which section is currently in view so the navigation can highlight
  * it. Picks the topmost intersecting section rather than the last one to fire,
  * which keeps the highlight stable when scrolling upwards.
  */
-export function useActiveSection(ids: string[]) {
+export function useActiveSection(ids: readonly string[]) {
   const [active, setActive] = useState(ids[0] ?? "");
 
+  // Callers commonly pass an array literal, which is a new reference on every
+  // render; keying on the contents stops the observer from being torn down and
+  // rebuilt each time.
+  const key = ids.join(",");
+
   useEffect(() => {
+    const ids = key.split(",");
+
     const elements = ids
       .map((id) => document.getElementById(id))
       .filter((el): el is HTMLElement => el !== null);
@@ -30,7 +37,7 @@ export function useActiveSection(ids: string[]) {
 
     elements.forEach((el) => observer.observe(el));
     return () => observer.disconnect();
-  }, [ids]);
+  }, [key]);
 
   return active;
 }

@@ -22,7 +22,7 @@ export function Avatar({ className }: { className?: string }) {
       <span
         aria-hidden
         className={cn(
-          "inline-flex size-16 shrink-0 items-center justify-center rounded-full border border-border bg-surface-raised font-mono text-lg font-medium text-accent",
+          "inline-flex size-16 shrink-0 items-center justify-center rounded-full border border-border bg-surface-raised font-mono text-4xl font-medium text-accent",
           className,
         )}
       >
@@ -35,8 +35,9 @@ export function Avatar({ className }: { className?: string }) {
     <Image
       src={profile.photo}
       alt={profile.name}
-      width={128}
-      height={128}
+      width={512}
+      height={512}
+      sizes="(min-width: 1024px) 20rem, (min-width: 640px) 16rem, 12rem"
       priority
       onError={() => setFailed(true)}
       className={cn(

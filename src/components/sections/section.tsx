@@ -1,31 +1,38 @@
 import type { ReactNode } from "react";
+import { Reveal } from "@/components/reveal";
+import { cn } from "@/lib/utils";
 
 type SectionProps = {
   id: string;
   title: string;
   children: ReactNode;
+  /** Tints the band so consecutive sections read as separate blocks. */
+  tinted?: boolean;
 };
 
-/**
- * A content section with a heading that sticks to the top on small screens,
- * where the sidebar navigation is not visible.
- */
-export function Section({ id, title, children }: SectionProps) {
+/** A full-width band with a centred heading. */
+export function Section({ id, title, children, tinted = false }: SectionProps) {
   return (
     <section
       id={id}
       aria-labelledby={`${id}-heading`}
-      className="mb-20 scroll-mt-20 xl:mb-28 xl:scroll-mt-24"
+      className={cn(
+        "scroll-mt-16 py-20 sm:py-28",
+        tinted && "bg-surface/40",
+      )}
     >
-      <div className="sticky top-0 z-20 -mx-6 mb-6 bg-background/85 px-6 py-4 backdrop-blur-sm xl:relative xl:top-auto xl:mx-0 xl:px-0 xl:py-0 xl:backdrop-blur-none">
-        <h2
-          id={`${id}-heading`}
-          className="font-mono text-xs font-semibold tracking-[0.16em] text-subtle uppercase"
-        >
-          {title}
-        </h2>
+      <div className="mx-auto w-full max-w-[100rem] px-6 sm:px-10 lg:px-16">
+        <Reveal className="mb-12 text-center sm:mb-16">
+          <h2
+            id={`${id}-heading`}
+            className="text-3xl font-semibold tracking-tight text-balance sm:text-4xl"
+          >
+            {title}
+          </h2>
+          <span aria-hidden className="mx-auto mt-5 block h-px w-16 bg-accent" />
+        </Reveal>
+        {children}
       </div>
-      {children}
     </section>
   );
 }
