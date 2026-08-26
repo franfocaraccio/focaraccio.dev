@@ -12,7 +12,7 @@ export function About({ dict }: { dict: Dictionary }) {
     <Section id="about" title={dict.sections.about}>
       <Reveal className="flex flex-col gap-4">
         {dict.about.paragraphs.map((paragraph, index) => (
-          <p key={index} className="leading-relaxed text-muted">
+          <p key={index} className="measure leading-relaxed text-muted">
             {paragraph}
           </p>
         ))}

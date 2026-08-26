@@ -91,6 +91,18 @@
   .text-balance {
     text-wrap: balance;
   }
+
+  /*
+   * Caps running text at a comfortable line length. The layout is free to grow
+   * on wide screens; paragraphs are not, because past ~75 characters the eye
+   * starts losing its place on the return sweep.
+   *
+   * `ch` is the width of the zero glyph, which in Inter is narrower than the
+   * average letter — 58ch measures out to roughly 68 real characters.
+   */
+  .measure {
+    max-width: 58ch;
+  }
 }
 
 /* Honour the OS-level motion preference: no entrance animation, no smooth scroll. */

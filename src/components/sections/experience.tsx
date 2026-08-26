@@ -11,7 +11,7 @@ export function Experience({ dict }: { dict: Dictionary }) {
           <li key={job.company}>
             <Reveal delay={index * 0.05}>
               {/* The card lifts on hover to signal a single, coherent block. */}
-              <article className="group relative grid gap-2 rounded-xl p-4 transition-colors duration-300 sm:grid-cols-[8.5rem_1fr] sm:gap-6 lg:hover:bg-surface-raised">
+              <article className="group relative grid gap-2 rounded-xl p-4 transition-colors duration-300 sm:grid-cols-[8.5rem_1fr] sm:gap-6 xl:grid-cols-[10rem_1fr] xl:gap-8 xl:hover:bg-surface-raised">
                 <p className="tabular pt-1 font-mono text-xs tracking-wide text-subtle uppercase">
                   {job.period}
                 </p>
@@ -26,7 +26,7 @@ export function Experience({ dict }: { dict: Dictionary }) {
                     {job.bullets.map((bullet, bulletIndex) => (
                       <li
                         key={bulletIndex}
-                        className="relative pl-4 text-sm leading-relaxed text-muted before:absolute before:top-[0.6em] before:left-0 before:size-1 before:rounded-full before:bg-border"
+                        className="measure relative pl-4 text-sm leading-relaxed text-muted before:absolute before:top-[0.6em] before:left-0 before:size-1 before:rounded-full before:bg-border"
                       >
                         {bullet}
                       </li>

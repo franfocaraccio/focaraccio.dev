@@ -13,7 +13,7 @@ export function Contact({ dict }: { dict: Dictionary }) {
         <h2 id="contact-heading" className="text-2xl font-semibold tracking-tight">
           {dict.contact.title}
         </h2>
-        <p className="mt-3 max-w-md leading-relaxed text-muted">
+        <p className="measure mt-3 leading-relaxed text-muted">
           {dict.contact.body}
         </p>
         <a

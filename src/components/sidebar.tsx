@@ -35,7 +35,7 @@ export function Sidebar({ dict, locale }: SidebarProps) {
   ];
 
   return (
-    <header className="lg:sticky lg:top-0 lg:flex lg:max-h-screen lg:w-[45%] lg:flex-col lg:justify-between lg:py-24">
+    <header className="xl:sticky xl:top-0 xl:flex xl:max-h-screen xl:w-[24rem] xl:shrink-0 xl:flex-col xl:justify-between xl:py-24 2xl:w-[26rem]">
       <div className="flex flex-col gap-8">
         <div className="flex items-start justify-between gap-4">
           <div className="flex items-center gap-4">
@@ -56,7 +56,7 @@ export function Sidebar({ dict, locale }: SidebarProps) {
           </div>
         </div>
 
-        <p className="max-w-sm text-base leading-relaxed text-muted text-balance">
+        <p className="max-w-prose text-base leading-relaxed text-muted text-balance xl:text-lg">
           {dict.hero.tagline}
         </p>
 
@@ -65,7 +65,7 @@ export function Sidebar({ dict, locale }: SidebarProps) {
           {dict.hero.location}
         </p>
 
-        <nav aria-label={dict.a11y.openMenu} className="hidden lg:block">
+        <nav aria-label={dict.a11y.openMenu} className="hidden xl:block">
           <ul className="flex flex-col gap-1">
             {SECTION_IDS.map((id) => {
               const isActive = active === id;
@@ -103,7 +103,7 @@ export function Sidebar({ dict, locale }: SidebarProps) {
         </nav>
       </div>
 
-      <div className="mt-8 flex flex-wrap items-center gap-3 lg:mt-0">
+      <div className="mt-8 flex flex-wrap items-center gap-3 xl:mt-0">
         <a
           href={dict.hero.resumeHref}
           download

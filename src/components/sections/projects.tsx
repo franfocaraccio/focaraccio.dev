@@ -30,7 +30,7 @@ export function Projects({ dict }: { dict: Dictionary }) {
                   <span className="sr-only">— {dict.projects.repoLabel}</span>
                 </h3>
 
-                <p className="mt-2 text-sm leading-relaxed text-muted">
+                <p className="measure mt-2 text-sm leading-relaxed text-muted">
                   {dict.projects.descriptions[project.key]}
                 </p>
 

@@ -10,7 +10,7 @@ export function Education({ dict }: { dict: Dictionary }) {
           {dict.education.items.map((item) => (
             <li
               key={item.degree}
-              className="grid gap-1 sm:grid-cols-[8.5rem_1fr] sm:gap-6"
+              className="grid gap-1 sm:grid-cols-[8.5rem_1fr] sm:gap-6 xl:grid-cols-[10rem_1fr] xl:gap-8"
             >
               <p className="tabular pt-0.5 font-mono text-xs tracking-wide text-subtle uppercase">
                 {item.period}
