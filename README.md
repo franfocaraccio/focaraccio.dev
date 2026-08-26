@@ -33,6 +33,7 @@ depending on the browser's `Accept-Language` header.
 | `src/app/[locale]/`     | Root layout and page, one static build per locale.             |
 | `src/components/`       | UI. `sections/` holds the page sections.                       |
 | `src/app/globals.css`   | Design tokens for both themes.                                 |
+| `src/app/icon.svg`      | Favicon: an F monogram drawn as rects, no font dependency.     |
 | `public/cv/`            | Downloadable CV PDFs, one per language.                        |
 
 ## Content updates
@@ -40,6 +41,10 @@ depending on the browser's `Accept-Language` header.
 Everything shown on the page comes from `src/content/cv.ts`. Adding a job means
 adding one entry to `experience.items` in **both** the `en` and `es`
 dictionaries — TypeScript will flag a mismatch in shape.
+
+Featured projects are a curated list, not a GitHub API pull: `projects` holds
+the repo URL and stack, and each dictionary holds the description under the
+matching key. Adding one means adding the entry plus both descriptions.
 
 When the CV PDFs change, replace the files in `public/cv/` keeping the same
 names.

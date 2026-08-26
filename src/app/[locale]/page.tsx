@@ -3,6 +3,7 @@ import { About } from "@/components/sections/about";
 import { Contact } from "@/components/sections/contact";
 import { Education } from "@/components/sections/education";
 import { Experience } from "@/components/sections/experience";
+import { Projects } from "@/components/sections/projects";
 import { TechStack } from "@/components/sections/tech-stack";
 import { Sidebar } from "@/components/sidebar";
 import { Spotlight } from "@/components/spotlight";
@@ -32,6 +33,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
         <main id="content" className="pt-16 lg:w-[52%] lg:py-24">
           <About dict={dict} />
           <Experience dict={dict} />
+          <Projects dict={dict} />
           <TechStack dict={dict} />
           <Education dict={dict} />
           <Contact dict={dict} />

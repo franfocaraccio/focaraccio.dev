@@ -72,6 +72,47 @@ export const skillGroups: SkillGroup[] = [
   },
 ];
 
+export type Project = {
+  /** Matches the key used in each dictionary's `projects.items`. */
+  key: string;
+  name: string;
+  repo: string;
+  stack: string[];
+};
+
+/**
+ * Hand-picked repositories, newest work first. Kept as a curated list rather
+ * than pulled from the GitHub API: the copy here is written for a recruiter,
+ * not derived from repo metadata.
+ */
+export const projects: Project[] = [
+  {
+    key: "erp",
+    name: "ERP PyME",
+    repo: "https://github.com/franfocaraccio/ERPSoftware",
+    stack: [
+      "TypeScript",
+      "tRPC",
+      "Drizzle ORM",
+      "PostgreSQL",
+      "React 19",
+      "Turborepo",
+    ],
+  },
+  {
+    key: "brabusfit",
+    name: "Brabus Fit",
+    repo: "https://github.com/franfocaraccio/brabusfit",
+    stack: ["Next.js", "React 19", "TypeScript", "Supabase", "Tailwind CSS"],
+  },
+  {
+    key: "casakira",
+    name: "Casa Kira",
+    repo: "https://github.com/franfocaraccio/CasaKira",
+    stack: ["Astro", "React", "Tailwind CSS"],
+  },
+];
+
 export type Experience = {
   company: string;
   role: string;
@@ -89,7 +130,13 @@ export type Education = {
 };
 
 export type Dictionary = {
-  nav: { about: string; experience: string; stack: string; education: string };
+  nav: {
+    about: string;
+    experience: string;
+    projects: string;
+    stack: string;
+    education: string;
+  };
   hero: {
     role: string;
     tagline: string;
@@ -101,12 +148,19 @@ export type Dictionary = {
   sections: {
     about: string;
     experience: string;
+    projects: string;
     stack: string;
     education: string;
     contact: string;
   };
   about: { paragraphs: string[]; yearsLabel: string };
   experience: { items: Experience[]; currentLabel: string };
+  projects: {
+    /** Keyed by `Project.key`. */
+    descriptions: Record<string, string>;
+    viewAll: string;
+    repoLabel: string;
+  };
   stack: { groups: Record<string, string> };
   education: {
     items: Education[];
@@ -128,6 +182,7 @@ const en: Dictionary = {
   nav: {
     about: "About",
     experience: "Experience",
+    projects: "Projects",
     stack: "Tech Stack",
     education: "Education",
   },
@@ -143,6 +198,7 @@ const en: Dictionary = {
   sections: {
     about: "About",
     experience: "Experience",
+    projects: "Projects",
     stack: "Tech Stack",
     education: "Education",
     contact: "Get in touch",
@@ -227,6 +283,17 @@ const en: Dictionary = {
       },
     ],
   },
+  projects: {
+    descriptions: {
+      erp: "Multi-tenant SaaS ERP for Argentine small businesses, with electronic invoicing wired straight into ARCA (formerly AFIP). Monorepo with end-to-end type safety, row-level tenant isolation in Postgres, and money handled as a value object rather than floats.",
+      brabusfit:
+        "Training app for coaches and their clients. Coaches build routines and share them by email; clients log weight and reps so progress stays visible to both. Mobile-first, because it is used mid-workout.",
+      casakira:
+        "Website redesign for an industrial sewing machine dealer in Buenos Aires. Static-first for SEO and speed, with React used only in the two interactive islands that actually need it.",
+    },
+    viewAll: "See all repositories",
+    repoLabel: "View on GitHub",
+  },
   stack: {
     groups: {
       backend: "Backend",
@@ -281,6 +348,7 @@ const es: Dictionary = {
   nav: {
     about: "Sobre mí",
     experience: "Experiencia",
+    projects: "Proyectos",
     stack: "Tecnologías",
     education: "Formación",
   },
@@ -296,6 +364,7 @@ const es: Dictionary = {
   sections: {
     about: "Sobre mí",
     experience: "Experiencia",
+    projects: "Proyectos",
     stack: "Tecnologías",
     education: "Formación",
     contact: "Contacto",
@@ -379,6 +448,17 @@ const es: Dictionary = {
         stack: ["C#", "ASP.NET MVC", "AngularJS", "jQuery", "SQL Server", "Scrum"],
       },
     ],
+  },
+  projects: {
+    descriptions: {
+      erp: "ERP SaaS multi-tenant para PyMEs argentinas, con facturación electrónica integrada contra ARCA (ex AFIP). Monorepo con tipado de punta a punta, aislamiento por tenant a nivel de fila en Postgres y montos modelados como value object en vez de floats.",
+      brabusfit:
+        "App de entrenamiento para coaches y alumnos. Los coaches arman rutinas y las comparten por email; los alumnos registran peso y repeticiones para que el progreso quede a la vista de ambos. Mobile-first, porque se usa entrenando.",
+      casakira:
+        "Rediseño del sitio de un distribuidor de máquinas de coser industriales en Buenos Aires. Estático para SEO y velocidad, con React sólo en las dos islas interactivas que realmente lo necesitan.",
+    },
+    viewAll: "Ver todos los repositorios",
+    repoLabel: "Ver en GitHub",
   },
   stack: {
     groups: {

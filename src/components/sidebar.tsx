@@ -11,7 +11,13 @@ import type { Locale } from "@/lib/i18n";
 import { useActiveSection } from "@/lib/use-active-section";
 import { cn } from "@/lib/utils";
 
-const SECTION_IDS = ["about", "experience", "stack", "education"] as const;
+const SECTION_IDS = [
+  "about",
+  "experience",
+  "projects",
+  "stack",
+  "education",
+] as const;
 
 type SidebarProps = {
   dict: Dictionary;
@@ -87,7 +93,7 @@ export function Sidebar({ dict, locale }: SidebarProps) {
                           : "text-subtle group-hover:text-foreground",
                       )}
                     >
-                      {dict.nav[id === "stack" ? "stack" : id]}
+                      {dict.nav[id]}
                     </span>
                   </a>
                 </li>
