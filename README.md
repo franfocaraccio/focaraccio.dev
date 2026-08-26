@@ -46,8 +46,9 @@ names.
 
 ## Assets
 
-- `public/profile.jpg` — profile photo, square, at least 256×256. Until it is
-  added, the sidebar falls back to a monogram avatar.
+- `public/profile.jpg` — profile photo, square, 512×512. To replace it, crop a
+  new square framed on the head and upper chest; the sidebar renders it in a
+  64px circle and falls back to a monogram avatar if the file is missing.
 
 ## Deployment
 
