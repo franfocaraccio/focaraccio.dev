@@ -52,7 +52,8 @@ names.
 ## Assets
 
 - `public/portrait.webp` — cut-out portrait with a transparent background,
-  900px wide, faded out towards the bottom edge.
+  900×852, cropped to head and shoulders and faded out just past the sleeve
+  seam.
 
   To regenerate it from a new photo, background removal needs a real
   segmentation model — colour keying fails because skin tones sit too close to
@@ -62,9 +63,16 @@ names.
   pip install rembg onnxruntime
   ```
 
-  Then run `rembg` with the `u2net_human_seg` model and alpha matting, erode the
-  resulting matte a few pixels so the soft edge lands on subject pixels rather
-  than the wall-contaminated rim, and fade the bottom ~20% of the alpha.
+  Then run `rembg` with the `u2net_human_seg` model and alpha matting. The
+  matte it produces still leaves wall-coloured pixels clinging to the
+  silhouette, so clean those up afterwards: build a band around the edge from a
+  *low* alpha threshold (the contaminated rim is semi-transparent — around alpha
+  77 — so a high threshold misses most of it), and inside that band scale alpha
+  by the pixel's LAB distance from the wall colour. Hair sits far enough from
+  the wall in that space that it survives untouched.
+
+  Note that replacing the file without clearing `.next` will keep serving the
+  previously optimised version, since Next caches by URL.
 
 ## Deployment
 
