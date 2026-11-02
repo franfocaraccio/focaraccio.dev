@@ -67,6 +67,23 @@ dictionary and the hero omits the download button there.
   Note that replacing a file without clearing `.next` will keep serving the
   previously optimised version, since Next caches by URL.
 
+- `src/app/[locale]/opengraph-image.tsx` — the 1200×630 share card shown when
+  the link is posted on LinkedIn, WhatsApp, Slack or X. One per locale,
+  prerendered at build time, built from the same dictionary as the page.
+
+  The renderer behind `next/og` only reads static TTF/OTF fonts and PNG/JPEG
+  images, so it cannot reuse what the page loads:
+
+  - `assets/fonts/` holds static TTF cuts of Raleway Bold, JetBrains Mono Medium
+    and Inter Regular from Google Fonts (SIL Open Font License).
+  - `assets/og-portrait.jpg` is a JPEG copy of `public/avatar.webp`.
+    **Regenerate it whenever the portrait changes**, or the share card will keep
+    showing the old photo.
+
+  In development the image URLs in the page's meta tags point at `localhost`;
+  that is deliberate on Next's side. Production builds use `metadataBase`
+  (`https://focaraccio.dev`).
+
 ## Deployment
 
 Built for Vercel with the `focaraccio.dev` domain. `npm run build` produces a
