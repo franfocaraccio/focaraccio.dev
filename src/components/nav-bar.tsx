@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { LanguageToggle } from "@/components/language-toggle";
 import { ThemeToggle } from "@/components/theme-toggle";
 import type { Dictionary } from "@/content/cv";
@@ -18,47 +17,17 @@ const SECTION_IDS = [
   "contact",
 ] as const;
 
-/** Share of the hero that must still be visible for the bar to stay at the bottom. */
-const PIN_THRESHOLD = 0.4;
-
 type NavBarProps = {
   dict: Dictionary;
   locale: Locale;
 };
 
-/**
- * Rests against the bottom of the hero, then pins to the top of the viewport
- * once the hero is scrolled past — so the opening screen stays uninterrupted
- * and the navigation is always reachable afterwards.
- */
+/** Fixed to the top of the viewport for the whole page. */
 export function NavBar({ dict, locale }: NavBarProps) {
   const active = useActiveSection(SECTION_IDS);
-  const [pinned, setPinned] = useState(false);
-
-  useEffect(() => {
-    const hero = document.getElementById("home");
-    if (!hero) return;
-
-    const observer = new IntersectionObserver(
-      // Pins once most of the hero has scrolled away, rather than on the first
-      // few pixels of movement.
-      ([entry]) => setPinned(entry.intersectionRatio < PIN_THRESHOLD),
-      { threshold: [0, PIN_THRESHOLD, 1] },
-    );
-
-    observer.observe(hero);
-    return () => observer.disconnect();
-  }, []);
 
   return (
-    <div
-      className={cn(
-        "fixed inset-x-0 z-40 transition-[opacity,transform] duration-300",
-        pinned
-          ? "top-0 border-b border-border bg-background/85 backdrop-blur-md"
-          : "bottom-0",
-      )}
-    >
+    <div className="fixed inset-x-0 top-0 z-40 border-b border-border bg-background/85 backdrop-blur-md">
       <div className="mx-auto flex h-16 w-full max-w-[100rem] items-center gap-4 px-4 sm:px-6 lg:px-10">
         <nav aria-label={dict.a11y.openMenu} className="min-w-0 flex-1">
           {/* Scrolls sideways on narrow screens rather than wrapping to two rows. */}

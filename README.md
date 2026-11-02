@@ -54,7 +54,8 @@ dictionary and the hero omits the download button there.
 
 - `public/avatar-dark.webp` / `public/avatar-light.webp` — circular portrait,
   800×800, whose alpha fades radially so the edge dissolves into the page
-  rather than ending on a rim.
+  rather than ending on a rim. The falloff starts well outside the head, so the
+  whole face and the shoulders stay opaque.
 
   Two files because the photo was shot against a light wall. Fading alone melts
   into a light page but reads as a glowing disc on a dark one, so the dark

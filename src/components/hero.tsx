@@ -30,8 +30,8 @@ export function Hero({ dict }: { dict: Dictionary }) {
     <section
       id="home"
       aria-label={dict.nav.home}
-      // Leaves room for the navigation resting against the bottom edge.
-      className="relative flex min-h-dvh flex-col items-center justify-center px-6 pt-24 pb-32 text-center"
+      // Top padding clears the fixed navigation bar.
+      className="relative flex min-h-dvh flex-col items-center justify-center px-6 pt-28 pb-24 text-center"
     >
       {/* Faint grid, fading out towards the edges, to keep the field from reading as flat black. */}
       <div
@@ -111,7 +111,7 @@ export function Hero({ dict }: { dict: Dictionary }) {
         {...rise(0.36)}
         href="#about"
         aria-label={dict.hero.scrollHint}
-        className="absolute bottom-24 left-1/2 hidden -translate-x-1/2 cursor-pointer flex-col items-center gap-2 font-mono text-[0.625rem] tracking-[0.2em] text-subtle uppercase transition-colors duration-200 hover:text-accent lg:flex"
+        className="absolute bottom-10 left-1/2 hidden -translate-x-1/2 cursor-pointer flex-col items-center gap-2 font-mono text-[0.625rem] tracking-[0.2em] text-subtle uppercase transition-colors duration-200 hover:text-accent lg:flex"
       >
         {dict.hero.scrollHint}
         <ArrowDown className="size-4 animate-bounce" strokeWidth={1.75} aria-hidden />
