@@ -224,9 +224,9 @@ const en: Dictionary = {
   },
   about: {
     paragraphs: [
-      "I'm a senior software engineer with 12 years building software products end to end, from the backend systems that do the heavy lifting to the web apps people use, across fintech, banking and IoT.",
-      "My strongest area is the .NET/C# ecosystem: microservices, event-driven architectures and cloud infrastructure on Azure and AWS, with full-stack experience in TypeScript, Angular and React.",
-      "I use AI coding agents across the development lifecycle, from code generation and refactoring to code review, and I have explored integrating LLM capabilities into the products I build.",
+      "I'm a senior software engineer with 12 years of experience building software products end to end, from backend to frontend, across fintech, banking and IoT.",
+      "My strongest area is the backend with .NET/C#: microservices, event-driven architectures and cloud infrastructure on Azure and AWS. On the frontend I work with TypeScript, Angular and React.",
+      "I use AI coding agents across the development lifecycle, from code generation and refactoring to code review, and I integrate LLMs into the products I build.",
     ],
     yearsLabel: "years of experience",
   },
@@ -405,9 +405,9 @@ const es: Dictionary = {
   },
   about: {
     paragraphs: [
-      "Soy ingeniero de software senior con 12 años construyendo productos de software de punta a punta, desde los sistemas backend que hacen el trabajo pesado hasta las aplicaciones web que la gente usa, en fintech, banca e IoT.",
-      "Mi terreno más sólido es el ecosistema .NET/C#: microservicios, arquitecturas orientadas a eventos e infraestructura cloud en Azure y AWS, con experiencia full stack en TypeScript, Angular y React.",
-      "Uso agentes de IA a lo largo del ciclo de desarrollo, desde generación y refactorización de código hasta code review, y exploré la integración de capacidades de LLM en los productos que construyo.",
+      "Soy ingeniero de software senior con 12 años de experiencia construyendo productos de software de punta a punta, del backend al frontend, en fintech, banca e IoT.",
+      "Mi terreno más sólido es el backend con .NET/C#: microservicios, arquitecturas orientadas a eventos e infraestructura cloud en Azure y AWS. En el frontend trabajo con TypeScript, Angular y React.",
+      "Uso agentes de IA a lo largo del ciclo de desarrollo, desde generación y refactorización de código hasta code review, e integro LLMs en los productos que desarrollo.",
     ],
     yearsLabel: "años de experiencia",
   },
