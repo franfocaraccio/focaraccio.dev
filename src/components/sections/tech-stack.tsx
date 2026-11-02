@@ -18,7 +18,7 @@ export function TechStack({ dict }: { dict: Dictionary }) {
               <ul className="mt-4 flex flex-wrap gap-1.5">
                 {group.items.map((item) => (
                   <li key={item}>
-                    <TechTag>{item}</TechTag>
+                    <TechTag>{dict.stack.items[item] ?? item}</TechTag>
                   </li>
                 ))}
               </ul>

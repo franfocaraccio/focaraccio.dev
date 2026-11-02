@@ -19,7 +19,10 @@ export type SkillGroup = {
   items: string[];
 };
 
-/** Tech stack is intentionally not translated — tool names are proper nouns. */
+/**
+ * Tool names are proper nouns and stay as-is; concepts are translated through
+ * each dictionary's `stack.items`.
+ */
 export const skillGroups: SkillGroup[] = [
   {
     key: "backend",
@@ -168,7 +171,11 @@ export type Dictionary = {
     viewAll: string;
     repoLabel: string;
   };
-  stack: { groups: Record<string, string> };
+  stack: {
+    groups: Record<string, string>;
+    /** Translations for skill items that are concepts, keyed by the English item. */
+    items: Record<string, string>;
+  };
   education: {
     items: Education[];
     languagesTitle: string;
@@ -338,6 +345,7 @@ const en: Dictionary = {
       cloudAws: "AWS",
       devops: "DevOps",
     },
+    items: {},
   },
   education: {
     items: [
@@ -390,7 +398,6 @@ const es: Dictionary = {
     location: "Buenos Aires, Argentina",
     greeting: "Hola,",
     resumeCta: "Descargar CV",
-    // No Spanish CV exists, so the hero omits the download button entirely.
     resumeHref: "/cv/Francisco-Focaraccio-CV-ES.pdf",
     secondaryCta: "Conocerme mejor",
     scrollHint: "Scroll",
@@ -419,7 +426,7 @@ const es: Dictionary = {
         role: "Ingeniero de Software Senior",
         period: "Ene 2022 — Actualidad",
         bullets: [
-          "Desarrollo de un microservicio de procesamiento de pagos en tiempo real para Visa Offers Platform, que recibe y procesa transacciones de tarjetas Visa.",
+          "Desarrollo de un servicio de procesamiento de pagos en tiempo real, que recibe y procesa transacciones de tarjetas Visa.",
           "Desarrollo de microservicios .NET para integraciones bancarias, sistemas de pago por puntos y programas de loyalty, con arquitectura orientada a eventos sobre RabbitMQ en Azure.",
           "Administración de bases de datos SQL Server, servicios de Azure (App Services, Azure Functions, Container Apps, Key Vault, API Management) y pipelines de CI/CD en Azure DevOps.",
           "Incorporación de agentes de IA (Claude Code, GitHub Copilot, Cursor) al flujo de desarrollo para generación, refactorización, debugging y code review, con validación humana en cada cambio.",
@@ -491,7 +498,7 @@ const es: Dictionary = {
         role: "Ingeniero de Software Full Stack",
         period: "Dic 2014 — Ene 2017",
         bullets: [
-          "Desarrollo full stack sobre una aplicación de gestión financiera y de proyectos para seguimiento de costos y facturación: backend en C# y ASP.NET MVC, frontend en AngularJS, capa de datos en SQL Server.",
+          "Desarrollo sobre una aplicación de gestión financiera y de proyectos para seguimiento de costos y facturación: backend en C# y ASP.NET MVC, frontend en AngularJS, capa de datos en SQL Server.",
           "Trabajo en equipos Scrum, con seguimiento en Jira y control de versiones con Git.",
         ],
         stack: ["C#", "ASP.NET MVC", "AngularJS", "SQL Server", "Scrum"],
@@ -514,10 +521,18 @@ const es: Dictionary = {
       frontend: "Frontend",
       databases: "Bases de datos",
       ai: "IA / GenAI",
-      automation: "Automatizaciones",
+      automation: "Automatización",
       cloudAzure: "Microsoft Azure",
       cloudAws: "AWS",
       devops: "DevOps",
+    },
+    items: {
+      Microservices: "Microservicios",
+      "Event-Driven Architecture": "Arquitectura orientada a eventos",
+      "Distributed Systems": "Sistemas distribuidos",
+      "Software Architecture": "Arquitectura de software",
+      "LLM Integration": "Integración de LLMs",
+      "AI Agents": "Agentes de IA",
     },
   },
   education: {
