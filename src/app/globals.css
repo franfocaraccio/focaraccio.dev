@@ -26,17 +26,6 @@
   --accent-soft: #0f766e14;
   --on-accent: #ffffff;
   --ring: #0f766e;
-
-  /*
-   * Chips laid over the photo card. Fixed rather than themed: the portrait was
-   * shot against a light wall, so these stay dark in both themes to keep their
-   * contrast against the photo rather than against the page.
-   */
-  --overlay: #0b0f14;
-  --overlay-border: #263442;
-  --on-overlay: #e6edf3;
-  --on-overlay-muted: #9aa7b4;
-  --on-overlay-accent: #2dd4bf;
 }
 
 .dark {
@@ -65,11 +54,6 @@
   --color-accent-soft: var(--accent-soft);
   --color-on-accent: var(--on-accent);
   --color-ring: var(--ring);
-  --color-overlay: var(--overlay);
-  --color-overlay-border: var(--overlay-border);
-  --color-on-overlay: var(--on-overlay);
-  --color-on-overlay-muted: var(--on-overlay-muted);
-  --color-on-overlay-accent: var(--on-overlay-accent);
 
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-raleway), var(--font-inter), ui-sans-serif, sans-serif;

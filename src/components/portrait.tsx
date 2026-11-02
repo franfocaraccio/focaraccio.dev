@@ -8,24 +8,29 @@ const socials = [
 ];
 
 /**
- * Photo card: the portrait fills a rounded frame with the social links laid
- * over it. The photo was shot against a plain light wall, which here becomes
- * the card's own background — no cut-out needed, and the dark chips give the
- * light frame something to anchor against.
+ * Circular portrait inside a thick ring.
+ *
+ * The ring is a filled circle of the raised surface colour rather than a
+ * border, so it reads as a mat the photo is mounted on and follows the theme.
+ * The photo itself is black and white: it was shot against a plain light wall
+ * under flat light, and dropping the colour turns that into a studio look
+ * instead of something to correct.
  */
 export function Portrait() {
   return (
-    <div className="relative mx-auto w-full max-w-[24rem] overflow-hidden rounded-3xl border border-border sm:max-w-[26rem]">
-      <Image
-        src={profile.photo}
-        alt={profile.name}
-        width={1000}
-        height={1250}
-        sizes="(min-width: 640px) 26rem, 24rem"
-        className="h-auto w-full"
-      />
+    <div className="flex flex-col items-center gap-6">
+      <div className="rounded-full bg-surface-raised p-4 shadow-[0_24px_60px_-24px_rgba(0,0,0,0.55)] sm:p-5">
+        <Image
+          src={profile.photo}
+          alt={profile.name}
+          width={720}
+          height={720}
+          sizes="(min-width: 640px) 20rem, 16rem"
+          className="size-64 rounded-full object-cover sm:size-80"
+        />
+      </div>
 
-      <ul className="absolute top-4 left-4 flex items-center gap-2 sm:top-5 sm:left-5">
+      <ul className="flex items-center gap-2">
         {socials.map(({ href, label, Icon }) => (
           <li key={label}>
             <a
@@ -34,7 +39,7 @@ export function Portrait() {
               rel="noreferrer"
               aria-label={label}
               title={label}
-              className="inline-flex size-11 cursor-pointer items-center justify-center rounded-full bg-overlay/85 text-on-overlay backdrop-blur-sm transition-colors duration-200 hover:text-on-overlay-accent"
+              className="inline-flex size-11 cursor-pointer items-center justify-center rounded-full border border-border bg-surface text-muted transition-colors duration-200 hover:border-accent hover:text-accent"
             >
               <Icon className="size-[18px]" aria-hidden />
             </a>
