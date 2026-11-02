@@ -15,13 +15,13 @@
  */
 :root {
   /* Light theme runs warm: a cream paper rather than a clinical white. */
-  --background: #faf7f1;
-  --surface: #fffdf8;
-  --surface-raised: #f2eee4;
+  --background: #f2ede3;
+  --surface: #faf7f1;
+  --surface-raised: #e6dfd1;
   --foreground: #1a1714;
-  --muted: #5f564b;
-  --subtle: #726858;
-  --border: #e6dfd2;
+  --muted: #5a5146;
+  --subtle: #6a6052;
+  --border: #dad1c1;
   --accent: #0f766e;
   --accent-soft: #0f766e14;
   --on-accent: #ffffff;
