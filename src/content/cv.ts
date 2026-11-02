@@ -316,7 +316,7 @@ const en: Dictionary = {
         role: "Full Stack Software Engineer",
         period: "Dec 2014 — Jan 2017",
         bullets: [
-          "Worked full-stack on a financial and project management application for cost tracking and invoicing: backend in C# and ASP.NET MVC, frontend in AngularJS, data layer in SQL Server.",
+          "Worked on a financial and project management application for cost tracking and invoicing: backend in C# and ASP.NET MVC, frontend in AngularJS, data layer in SQL Server.",
           "Worked in Scrum teams, tracking work in Jira and using Git for version control.",
         ],
         stack: ["C#", "ASP.NET MVC", "AngularJS", "SQL Server", "Scrum"],
