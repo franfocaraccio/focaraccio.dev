@@ -1,6 +1,5 @@
 import { ArrowUpRight, CalendarDays } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "@/components/brand-icons";
-import { CopyEmailButton } from "@/components/copy-email-button";
 import { Reveal } from "@/components/reveal";
 import { Section } from "@/components/sections/section";
 import { profile, type Dictionary } from "@/content/cv";
@@ -34,15 +33,12 @@ export function Contact({ dict }: { dict: Dictionary }) {
             />
           </a>
 
-          <div className="flex items-center gap-2">
-            <a
-              href={`mailto:${profile.email}`}
-              className="inline-flex h-12 cursor-pointer items-center rounded-lg border border-border bg-surface px-5 text-sm font-medium transition-colors duration-200 hover:border-accent hover:text-accent"
-            >
-              {profile.email}
-            </a>
-            <CopyEmailButton labels={dict.contact} />
-          </div>
+          <a
+            href={`mailto:${profile.email}`}
+            className="inline-flex h-12 cursor-pointer items-center rounded-lg border border-border bg-surface px-5 text-sm font-medium transition-colors duration-200 hover:border-accent hover:text-accent"
+          >
+            {profile.email}
+          </a>
         </div>
 
         <ul className="mt-6 flex items-center gap-1">

@@ -1,5 +1,4 @@
 import { Mail, MapPin, Phone } from "lucide-react";
-import { CopyEmailButton } from "@/components/copy-email-button";
 import { CountUp } from "@/components/count-up";
 import { Portrait } from "@/components/portrait";
 import { Reveal } from "@/components/reveal";
@@ -46,7 +45,6 @@ export function About({ dict }: { dict: Dictionary }) {
               >
                 {profile.email}
               </a>
-              <CopyEmailButton labels={dict.contact} size="sm" />
             </li>
             <li className="flex items-center gap-3">
               <Phone

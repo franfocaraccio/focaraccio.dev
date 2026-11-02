@@ -179,9 +179,6 @@ export type Dictionary = {
     body: string;
     cta: string;
     bookCall: string;
-    copyEmail: string;
-    copied: string;
-    copyFailed: string;
   };
   footer: { rights: string };
   a11y: {
@@ -361,9 +358,6 @@ const en: Dictionary = {
     body: "I'm open to backend and architecture roles. Book a call straight into my calendar, or send me an email — I read everything.",
     cta: "Send an email",
     bookCall: "Book a call",
-    copyEmail: "Copy email address",
-    copied: "Email copied to clipboard",
-    copyFailed: "Couldn't copy the email",
   },
   footer: {
     rights: "All rights reserved.",
@@ -545,9 +539,6 @@ const es: Dictionary = {
     body: "Estoy abierto a posiciones de backend y arquitectura. Agendá una llamada directo en mi calendario, o escribime un mail — leo todo.",
     cta: "Enviar un mail",
     bookCall: "Agendar una llamada",
-    copyEmail: "Copiar dirección de email",
-    copied: "Email copiado al portapapeles",
-    copyFailed: "No se pudo copiar el email",
   },
   footer: {
     rights: "Todos los derechos reservados.",
