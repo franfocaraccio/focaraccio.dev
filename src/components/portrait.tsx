@@ -1,30 +1,40 @@
 import Image from "next/image";
 import { profile } from "@/content/cv";
 
+const SIZE = 800;
+const SIZES = "(min-width: 640px) 22rem, 20rem";
+const SHARED = "mx-auto h-auto w-full max-w-[20rem] sm:max-w-[22rem]";
+
 /**
- * Cut-out portrait. The subject sits directly on the page with no frame, over
- * a soft accent glow so the figure has something to stand against rather than
- * floating in empty space.
+ * Circular portrait whose edge dissolves into the page instead of ending on a
+ * hard rim.
+ *
+ * Two assets rather than one: the photo was shot against a light wall, so the
+ * fade alone melts into a light page but reads as a glowing disc on a dark one.
+ * The dark variant has its highlights pulled down to stop that; applying the
+ * same treatment in light mode would leave a grey halo instead. They are
+ * swapped with CSS, since the theme is a class on <html>, not a media query —
+ * only one is ever displayed, so both can carry the same alt text without a
+ * screen reader announcing it twice.
  */
 export function Portrait() {
   return (
-    <div className="relative mx-auto w-full max-w-[26rem]">
-      <div
-        aria-hidden
-        className="absolute inset-x-0 top-[8%] bottom-[12%] rounded-full blur-3xl"
-        style={{
-          background:
-            "radial-gradient(ellipse at 50% 40%, var(--accent-soft), transparent 70%)",
-        }}
+    <div className="relative">
+      <Image
+        src={profile.photoDark}
+        alt={profile.name}
+        width={SIZE}
+        height={SIZE}
+        sizes={SIZES}
+        className={`${SHARED} hidden dark:block`}
       />
       <Image
-        src={profile.photo}
+        src={profile.photoLight}
         alt={profile.name}
-        width={900}
-        height={852}
-        sizes="(max-width: 460px) 100vw, 26rem"
-        priority
-        className="relative h-auto w-full"
+        width={SIZE}
+        height={SIZE}
+        sizes={SIZES}
+        className={`${SHARED} block dark:hidden`}
       />
     </div>
   );

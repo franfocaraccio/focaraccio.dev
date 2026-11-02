@@ -1,6 +1,13 @@
 @import "tailwindcss";
 
 /*
+ * Bind the `dark:` variant to the class next-themes sets on <html>. Tailwind v4
+ * defaults it to prefers-color-scheme, which would follow the operating system
+ * and contradict the site's own toggle.
+ */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/*
  * Design tokens.
  *
  * Light is the default declaration; dark overrides only what changes so the two
