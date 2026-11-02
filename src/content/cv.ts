@@ -61,7 +61,6 @@ export const skillGroups: SkillGroup[] = [
       "Prompt Engineering",
       "Claude Code",
       "GitHub Copilot",
-      "Cursor",
     ],
   },
   { key: "automation", items: ["n8n", "Make"] },
@@ -245,10 +244,10 @@ const en: Dictionary = {
         role: "Senior Software Engineer",
         period: "Jan 2022 — Present",
         bullets: [
-          "Built a real-time payment processing microservice for the Visa Offers Platform, receiving and processing Visa card transactions.",
+          "Built a real-time payment processing service that receives and processes Visa card transactions.",
           "Develop .NET microservices for banking integrations, points-based payment systems and loyalty programs, using event-driven architecture with RabbitMQ on Azure.",
           "Manage SQL Server databases, Azure services (App Services, Azure Functions, Container Apps, Key Vault, API Management) and CI/CD pipelines in Azure DevOps.",
-          "Integrated AI coding agents (Claude Code, GitHub Copilot, Cursor) into the development workflow for code generation, refactoring, debugging and code review, with human validation on every change.",
+          "Integrated AI coding agents (Claude Code, GitHub Copilot) into the development workflow for code generation, refactoring, debugging and code review, with human validation on every change.",
           "Integrated LLMs into .NET applications: prompt engineering, tool/function calling, structured outputs and agent-based workflows.",
         ],
         stack: [
@@ -429,7 +428,7 @@ const es: Dictionary = {
           "Desarrollo de un servicio de procesamiento de pagos en tiempo real, que recibe y procesa transacciones de tarjetas Visa.",
           "Desarrollo de microservicios .NET para integraciones bancarias, sistemas de pago por puntos y programas de loyalty, con arquitectura orientada a eventos sobre RabbitMQ en Azure.",
           "Administración de bases de datos SQL Server, servicios de Azure (App Services, Azure Functions, Container Apps, Key Vault, API Management) y pipelines de CI/CD en Azure DevOps.",
-          "Incorporación de agentes de IA (Claude Code, GitHub Copilot, Cursor) al flujo de desarrollo para generación, refactorización, debugging y code review, con validación humana en cada cambio.",
+          "Incorporación de agentes de IA (Claude Code, GitHub Copilot) al flujo de desarrollo para generación, refactorización, debugging y code review, con validación humana en cada cambio.",
           "Integración de LLMs en aplicaciones .NET: prompt engineering, tool/function calling, structured outputs y workflows basados en agentes.",
         ],
         stack: [
