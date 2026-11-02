@@ -12,11 +12,13 @@ const inter = Inter({
   display: "swap",
 });
 
-// Display face, used only for the name in the hero.
+// Display face, used only for the name in the hero. Raleway is a variable
+// font, so no explicit weights: asking for a list of them emits one @font-face
+// per weight, which `next dev` fails to resolve ("next/font/google queries have
+// exactly one entry"). Production builds happen to survive it; dev does not.
 const raleway = Raleway({
   variable: "--font-raleway",
   subsets: ["latin"],
-  weight: ["600", "700"],
   display: "swap",
 });
 
