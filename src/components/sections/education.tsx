@@ -1,3 +1,4 @@
+import { CardGlow } from "@/components/card-glow";
 import { Reveal } from "@/components/reveal";
 import { Section } from "@/components/sections/section";
 import type { Dictionary } from "@/content/cv";
@@ -26,7 +27,8 @@ export function Education({ dict }: { dict: Dictionary }) {
         </Reveal>
 
         <Reveal delay={0.1}>
-          <div className="rounded-2xl border border-border bg-surface p-6">
+          <div className="relative isolate rounded-2xl border border-border bg-surface p-6">
+            <CardGlow />
             <h3 className="font-mono text-[0.6875rem] font-semibold tracking-[0.14em] text-subtle uppercase">
               {dict.education.languagesTitle}
             </h3>

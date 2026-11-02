@@ -114,6 +114,103 @@
   }
 }
 
+/*
+ * Experience timeline: an accent line that fills the grey rail as the reader
+ * scrolls through it. Driven by a scroll timeline, so it needs no JavaScript.
+ * It starts when the top of the list reaches the middle of the viewport and
+ * completes when the bottom does. Hidden wherever scroll-driven animations are
+ * unsupported or motion is reduced; the plain rail is shown instead.
+ */
+.timeline-progress {
+  display: none;
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .timeline-progress {
+      display: block;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      width: 1px;
+      background-color: var(--accent);
+      transform-origin: top;
+      animation: timeline-fill linear both;
+      animation-timeline: view();
+      animation-range: cover 50vh cover calc(100% - 50vh);
+    }
+  }
+}
+
+@keyframes timeline-fill {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+/*
+ * Cursor-following glow for cards (see CardGlow). The card needs
+ * `relative isolate`: isolation makes it the stacking context, so z-index: -1
+ * places the glow above the card's own background but under its content.
+ * ::before paints the brighter rim, masked down to the 1px border.
+ */
+.card-glow {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 300ms ease;
+  background: radial-gradient(
+    260px circle at var(--glow-x, 50%) var(--glow-y, 50%),
+    var(--accent-soft),
+    transparent 70%
+  );
+}
+
+.card-glow::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  padding: 1px;
+  border-radius: inherit;
+  background: radial-gradient(
+    200px circle at var(--glow-x, 50%) var(--glow-y, 50%),
+    var(--accent),
+    transparent 70%
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask-composite: exclude;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  :hover > .card-glow {
+    opacity: 1;
+  }
+}
+
+/*
+ * Theme switch: the default view transition crossfades the whole page. Turn
+ * that off so ThemeToggle can reveal the new theme with its own clip-path
+ * animation instead.
+ */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
 /* Honour the OS-level motion preference: no entrance animation, no smooth scroll. */
 @media (prefers-reduced-motion: reduce) {
   html {

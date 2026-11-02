@@ -8,6 +8,8 @@ export const profile = {
   linkedin: "https://www.linkedin.com/in/ffocaraccio",
   github: "https://github.com/franfocaraccio",
   site: "https://focaraccio.dev",
+  /** Google Calendar appointment page for booking a call. */
+  booking: "https://calendar.app.google/ZZLYgx5BXjMepGpr8",
   photo: "/avatar.webp",
 } as const;
 
@@ -158,7 +160,11 @@ export type Dictionary = {
     education: string;
     contact: string;
   };
-  about: { paragraphs: string[]; yearsLabel: string };
+  about: {
+    paragraphs: string[];
+    /** Captions for the stats row; the numbers are derived from the data. */
+    stats: { years: string; companies: string; technologies: string; languages: string };
+  };
   experience: { items: Experience[]; currentLabel: string };
   projects: {
     /** Keyed by `Project.key`. */
@@ -172,7 +178,15 @@ export type Dictionary = {
     languagesTitle: string;
     languages: { name: string; level: string }[];
   };
-  contact: { title: string; body: string; cta: string };
+  contact: {
+    title: string;
+    body: string;
+    cta: string;
+    bookCall: string;
+    copyEmail: string;
+    copied: string;
+    copyFailed: string;
+  };
   footer: { builtWith: string; rights: string };
   a11y: {
     switchToDark: string;
@@ -221,7 +235,12 @@ const en: Dictionary = {
       "Strongest in the .NET/C# ecosystem: microservices, event-driven architectures and cloud infrastructure on Azure and AWS, with full-stack experience in TypeScript, Angular and React.",
       "I use AI coding agents every day across the development lifecycle, from code generation and refactoring to code review, and I have explored integrating LLM capabilities into the products I build.",
     ],
-    yearsLabel: "years of experience",
+    stats: {
+      years: "years of experience",
+      companies: "companies",
+      technologies: "technologies in the stack",
+      languages: "languages",
+    },
   },
   experience: {
     currentLabel: "Present",
@@ -348,8 +367,12 @@ const en: Dictionary = {
   },
   contact: {
     title: "Let's talk",
-    body: "I'm open to backend and architecture roles. The fastest way to reach me is email — I read everything.",
+    body: "I'm open to backend and architecture roles. Book a call straight into my calendar, or send me an email — I read everything.",
     cta: "Send an email",
+    bookCall: "Book a call",
+    copyEmail: "Copy email address",
+    copied: "Email copied to clipboard",
+    copyFailed: "Couldn't copy the email",
   },
   footer: {
     builtWith: "Built with Next.js and Tailwind CSS.",
@@ -402,7 +425,12 @@ const es: Dictionary = {
       "Mi terreno más sólido es el ecosistema .NET/C#: microservicios, arquitecturas orientadas a eventos e infraestructura cloud en Azure y AWS, con experiencia full stack en TypeScript, Angular y React.",
       "Uso agentes de IA todos los días a lo largo del ciclo de desarrollo, desde generación y refactorización de código hasta code review, y exploré la integración de capacidades de LLM en los productos que construyo.",
     ],
-    yearsLabel: "años de experiencia",
+    stats: {
+      years: "años de experiencia",
+      companies: "empresas",
+      technologies: "tecnologías en el stack",
+      languages: "idiomas",
+    },
   },
   experience: {
     currentLabel: "Actualidad",
@@ -529,8 +557,12 @@ const es: Dictionary = {
   },
   contact: {
     title: "Hablemos",
-    body: "Estoy abierto a posiciones de backend y arquitectura. La vía más rápida es el mail — leo todo.",
+    body: "Estoy abierto a posiciones de backend y arquitectura. Agendá una llamada directo en mi calendario, o escribime un mail — leo todo.",
     cta: "Enviar un mail",
+    bookCall: "Agendar una llamada",
+    copyEmail: "Copiar dirección de email",
+    copied: "Email copiado al portapapeles",
+    copyFailed: "No se pudo copiar el email",
   },
   footer: {
     builtWith: "Hecho con Next.js y Tailwind CSS.",

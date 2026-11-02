@@ -1,15 +1,28 @@
 import { Mail, MapPin, Phone } from "lucide-react";
+import { CopyEmailButton } from "@/components/copy-email-button";
+import { CountUp } from "@/components/count-up";
 import { Portrait } from "@/components/portrait";
 import { Reveal } from "@/components/reveal";
 import { Section } from "@/components/sections/section";
-import { profile, type Dictionary } from "@/content/cv";
+import { profile, skillGroups, type Dictionary } from "@/content/cv";
 import { yearsOfExperience } from "@/lib/experience";
 
 // Resolved once at module load so the render stays pure. The page is
 // prerendered, so this refreshes on every build.
 const years = yearsOfExperience();
 
+// Counted from the tech stack section itself, so the two can never disagree.
+const technologies = new Set(skillGroups.flatMap((group) => group.items)).size;
+
 export function About({ dict }: { dict: Dictionary }) {
+  // Every figure is derived from the CV data rather than typed in.
+  const stats = [
+    { value: years, suffix: "+", label: dict.about.stats.years },
+    { value: dict.experience.items.length, label: dict.about.stats.companies },
+    { value: technologies, label: dict.about.stats.technologies },
+    { value: dict.education.languages.length, label: dict.about.stats.languages },
+  ];
+
   return (
     <Section id="about" title={dict.sections.about}>
       <div className="grid items-center gap-12 lg:grid-cols-[1fr_auto] lg:gap-20">
@@ -24,12 +37,16 @@ export function About({ dict }: { dict: Dictionary }) {
             </p>
           ))}
 
-          <p className="mt-2 flex items-baseline gap-3">
-            <span className="tabular font-mono text-5xl font-semibold text-accent">
-              {years}+
-            </span>
-            <span className="text-sm text-subtle">{dict.about.yearsLabel}</span>
-          </p>
+          <ul className="mt-2 grid grid-cols-2 gap-x-6 gap-y-5 sm:grid-cols-4">
+            {stats.map(({ value, suffix, label }) => (
+              <li key={label} className="flex flex-col gap-1">
+                <span className="tabular font-mono text-4xl font-semibold text-accent">
+                  <CountUp value={value} suffix={suffix} />
+                </span>
+                <span className="text-xs leading-snug text-subtle">{label}</span>
+              </li>
+            ))}
+          </ul>
 
           <ul className="mt-4 flex flex-col gap-2 text-sm text-muted">
             <li className="flex items-center gap-3">
@@ -44,6 +61,7 @@ export function About({ dict }: { dict: Dictionary }) {
               >
                 {profile.email}
               </a>
+              <CopyEmailButton labels={dict.contact} size="sm" />
             </li>
             <li className="flex items-center gap-3">
               <Phone

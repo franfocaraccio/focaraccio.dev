@@ -1,5 +1,6 @@
 import { ArrowUpRight } from "lucide-react";
 import { GithubIcon } from "@/components/brand-icons";
+import { CardGlow } from "@/components/card-glow";
 import { Reveal } from "@/components/reveal";
 import { Section } from "@/components/sections/section";
 import { TechTag } from "@/components/tech-tag";
@@ -17,8 +18,9 @@ export function Projects({ dict }: { dict: Dictionary }) {
                 href={project.repo}
                 target="_blank"
                 rel="noreferrer"
-                className="group flex h-full cursor-pointer flex-col rounded-2xl border border-border bg-surface p-6 transition-colors duration-300 hover:border-accent"
+                className="group relative isolate flex h-full cursor-pointer flex-col rounded-2xl border border-border bg-surface p-6"
               >
+                <CardGlow />
                 <h3 className="flex items-center gap-2 text-lg font-medium transition-colors duration-200 group-hover:text-accent">
                   <GithubIcon className="size-5 shrink-0 text-subtle transition-colors duration-200 group-hover:text-accent" />
                   {project.name}
