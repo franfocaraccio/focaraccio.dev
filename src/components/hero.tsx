@@ -76,14 +76,17 @@ export function Hero({ dict }: { dict: Dictionary }) {
           >
             {dict.hero.secondaryCta}
           </a>
-          <a
-            href={dict.hero.resumeHref}
-            download
-            className="inline-flex h-12 cursor-pointer items-center gap-2 rounded-lg border border-border bg-surface px-6 text-sm font-medium transition-colors duration-200 hover:border-accent hover:text-accent"
-          >
-            <Download className="size-4" strokeWidth={2} aria-hidden />
-            {dict.hero.resumeCta}
-          </a>
+          {/* Only offered in languages that actually have a CV to download. */}
+          {dict.hero.resumeHref ? (
+            <a
+              href={dict.hero.resumeHref}
+              download
+              className="inline-flex h-12 cursor-pointer items-center gap-2 rounded-lg border border-border bg-surface px-6 text-sm font-medium transition-colors duration-200 hover:border-accent hover:text-accent"
+            >
+              <Download className="size-4" strokeWidth={2} aria-hidden />
+              {dict.hero.resumeCta}
+            </a>
+          ) : null}
 
           <ul className="flex items-center gap-1">
             {socials.map(({ href, label, Icon }) => (

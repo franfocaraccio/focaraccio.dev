@@ -46,8 +46,9 @@ Featured projects are a curated list, not a GitHub API pull: `projects` holds
 the repo URL and stack, and each dictionary holds the description under the
 matching key. Adding one means adding the entry plus both descriptions.
 
-When the CV PDFs change, replace the files in `public/cv/` keeping the same
-names.
+When the CV changes, replace the file in `public/cv/` keeping the same name.
+Only an English CV exists, so `hero.resumeHref` is null in the Spanish
+dictionary and the hero omits the download button there.
 
 ## Assets
 
