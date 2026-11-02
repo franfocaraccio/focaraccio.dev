@@ -160,11 +160,7 @@ export type Dictionary = {
     education: string;
     contact: string;
   };
-  about: {
-    paragraphs: string[];
-    /** Captions for the stats row; the numbers are derived from the data. */
-    stats: { years: string; companies: string; technologies: string; languages: string };
-  };
+  about: { paragraphs: string[]; yearsLabel: string };
   experience: { items: Experience[]; currentLabel: string };
   projects: {
     /** Keyed by `Project.key`. */
@@ -187,7 +183,7 @@ export type Dictionary = {
     copied: string;
     copyFailed: string;
   };
-  footer: { builtWith: string; rights: string };
+  footer: { rights: string };
   a11y: {
     switchToDark: string;
     switchToLight: string;
@@ -235,12 +231,7 @@ const en: Dictionary = {
       "Strongest in the .NET/C# ecosystem: microservices, event-driven architectures and cloud infrastructure on Azure and AWS, with full-stack experience in TypeScript, Angular and React.",
       "I use AI coding agents every day across the development lifecycle, from code generation and refactoring to code review, and I have explored integrating LLM capabilities into the products I build.",
     ],
-    stats: {
-      years: "years of experience",
-      companies: "companies",
-      technologies: "technologies in the stack",
-      languages: "languages",
-    },
+    yearsLabel: "years of experience",
   },
   experience: {
     currentLabel: "Present",
@@ -375,7 +366,6 @@ const en: Dictionary = {
     copyFailed: "Couldn't copy the email",
   },
   footer: {
-    builtWith: "Built with Next.js and Tailwind CSS.",
     rights: "All rights reserved.",
   },
   a11y: {
@@ -425,12 +415,7 @@ const es: Dictionary = {
       "Mi terreno más sólido es el ecosistema .NET/C#: microservicios, arquitecturas orientadas a eventos e infraestructura cloud en Azure y AWS, con experiencia full stack en TypeScript, Angular y React.",
       "Uso agentes de IA todos los días a lo largo del ciclo de desarrollo, desde generación y refactorización de código hasta code review, y exploré la integración de capacidades de LLM en los productos que construyo.",
     ],
-    stats: {
-      years: "años de experiencia",
-      companies: "empresas",
-      technologies: "tecnologías en el stack",
-      languages: "idiomas",
-    },
+    yearsLabel: "años de experiencia",
   },
   experience: {
     currentLabel: "Actualidad",
@@ -565,7 +550,6 @@ const es: Dictionary = {
     copyFailed: "No se pudo copiar el email",
   },
   footer: {
-    builtWith: "Hecho con Next.js y Tailwind CSS.",
     rights: "Todos los derechos reservados.",
   },
   a11y: {

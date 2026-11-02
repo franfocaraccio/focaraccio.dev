@@ -46,7 +46,6 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
           <p>
             © {new Date().getFullYear()} {profile.name}. {dict.footer.rights}
           </p>
-          <p className="mt-1">{dict.footer.builtWith}</p>
         </footer>
       </div>
     </>

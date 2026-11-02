@@ -25,7 +25,7 @@ export function CountUp({ value, suffix = "" }: CountUpProps) {
     if (!inView || prefersReducedMotion || !element) return;
 
     const controls = animate(0, value, {
-      duration: 1.2,
+      duration: 2.6,
       ease: [0.22, 1, 0.36, 1],
       onUpdate: (current) => {
         element.textContent = `${Math.round(current)}${suffix}`;

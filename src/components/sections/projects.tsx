@@ -9,9 +9,12 @@ import { profile, projects, type Dictionary } from "@/content/cv";
 export function Projects({ dict }: { dict: Dictionary }) {
   return (
     <Section id="projects" title={dict.sections.projects}>
-      <ul className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+      {/* Flex rather than grid so an incomplete last row is centred instead of
+          leaving empty columns on the right. Widths mirror a 1/2/3-column grid
+          with the 1.25rem gap taken out. */}
+      <ul className="flex flex-wrap justify-center gap-5">
         {projects.map((project, index) => (
-          <li key={project.key}>
+          <li key={project.key} className="w-full md:w-[calc(50%-0.625rem)] xl:w-[calc((100%-2.5rem)/3)]">
             <Reveal delay={index * 0.06} className="h-full">
               {/* The whole card is one link: no nested interactive elements. */}
               <a
