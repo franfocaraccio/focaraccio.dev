@@ -20,8 +20,10 @@ npm install
 npm run dev
 ```
 
-The site runs at http://localhost:3000, which redirects to `/es` or `/en`
-depending on the browser's `Accept-Language` header.
+The site runs at http://localhost:3000, which redirects to `/en` or `/es`
+depending on the browser's `Accept-Language` header. English is the default:
+a request that asks for no language, or only for ones the site lacks, gets
+`/en` — which is also what most link-preview crawlers end up showing.
 
 ## Project layout
 

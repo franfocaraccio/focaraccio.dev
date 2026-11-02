@@ -3,7 +3,7 @@ import { Inter, JetBrains_Mono, Raleway } from "next/font/google";
 import { notFound } from "next/navigation";
 import { ThemeProvider } from "@/components/theme-provider";
 import { getDictionary, profile } from "@/content/cv";
-import { isLocale, locales } from "@/lib/i18n";
+import { defaultLocale, isLocale, locales } from "@/lib/i18n";
 import "../globals.css";
 
 const inter = Inter({
@@ -58,7 +58,11 @@ export async function generateMetadata({
     description: dict.hero.tagline,
     alternates: {
       canonical: `/${locale}`,
-      languages: Object.fromEntries(locales.map((l) => [l, `/${l}`])),
+      languages: {
+        ...Object.fromEntries(locales.map((l) => [l, `/${l}`])),
+        // Where search engines send people whose language matches neither.
+        "x-default": `/${defaultLocale}`,
+      },
     },
     openGraph: {
       type: "profile",

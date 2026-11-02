@@ -1,9 +1,13 @@
-export const locales = ["es", "en"] as const;
+export const locales = ["en", "es"] as const;
 
 export type Locale = (typeof locales)[number];
 
-/** Spanish first: the primary audience is the local market. */
-export const defaultLocale: Locale = "es";
+/**
+ * English first: it is what a visitor gets when their browser asks for no
+ * language or one the site does not have, and what link-preview crawlers that
+ * send no Accept-Language end up seeing.
+ */
+export const defaultLocale: Locale = "en";
 
 export function isLocale(value: string): value is Locale {
   return locales.includes(value as Locale);
