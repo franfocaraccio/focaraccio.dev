@@ -11,6 +11,11 @@ export const profile = {
   /** Google Calendar appointment page for booking a call. */
   booking: "https://calendar.app.google/ZZLYgx5BXjMepGpr8",
   photo: "/avatar.webp",
+  /** Both CVs are offered in every language of the site. */
+  resumes: {
+    en: "/cv/Francisco-Focaraccio-CV-EN.pdf",
+    es: "/cv/Francisco-Focaraccio-CV-ES.pdf",
+  } satisfies Record<Locale, string>,
 } as const;
 
 export type SkillGroup = {
@@ -149,8 +154,6 @@ export type Dictionary = {
     location: string;
     greeting: string;
     resumeCta: string;
-    /** Null when no CV exists for that language. */
-    resumeHref: string | null;
     secondaryCta: string;
     scrollHint: string;
   };
@@ -216,7 +219,6 @@ const en: Dictionary = {
     location: "Buenos Aires, Argentina",
     greeting: "Hello,",
     resumeCta: "Download CV",
-    resumeHref: "/cv/Francisco-Focaraccio-CV-EN.pdf",
     secondaryCta: "About me",
     scrollHint: "Scroll",
   },
@@ -397,7 +399,6 @@ const es: Dictionary = {
     location: "Buenos Aires, Argentina",
     greeting: "Hola,",
     resumeCta: "Descargar CV",
-    resumeHref: "/cv/Francisco-Focaraccio-CV-ES.pdf",
     secondaryCta: "Sobre mí",
     scrollHint: "Scroll",
   },

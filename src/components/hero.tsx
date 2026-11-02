@@ -1,8 +1,9 @@
 "use client";
 
-import { ArrowDown, Download } from "lucide-react";
+import { ArrowDown } from "lucide-react";
 import { motion, useReducedMotion } from "motion/react";
 import { GithubIcon, LinkedinIcon } from "@/components/brand-icons";
+import { ResumeMenu } from "@/components/resume-menu";
 import { profile, type Dictionary } from "@/content/cv";
 
 const socials = [
@@ -76,17 +77,7 @@ export function Hero({ dict }: { dict: Dictionary }) {
           >
             {dict.hero.secondaryCta}
           </a>
-          {/* Only offered in languages that actually have a CV to download. */}
-          {dict.hero.resumeHref ? (
-            <a
-              href={dict.hero.resumeHref}
-              download
-              className="inline-flex h-12 cursor-pointer items-center gap-2 rounded-lg border border-border bg-surface px-6 text-sm font-medium transition-colors duration-200 hover:border-accent hover:text-accent"
-            >
-              <Download className="size-4" strokeWidth={2} aria-hidden />
-              {dict.hero.resumeCta}
-            </a>
-          ) : null}
+          <ResumeMenu label={dict.hero.resumeCta} />
 
           <ul className="flex items-center gap-1">
             {socials.map(({ href, label, Icon }) => (
