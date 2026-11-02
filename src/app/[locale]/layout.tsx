@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/next";
 import type { Metadata, Viewport } from "next";
 import { Inter, JetBrains_Mono, Raleway } from "next/font/google";
 import { notFound } from "next/navigation";
@@ -95,6 +96,8 @@ export default async function LocaleLayout({
     >
       <body className="flex min-h-full flex-col">
         <ThemeProvider>{children}</ThemeProvider>
+        {/* Cookieless page views; only records once enabled in the Vercel project. */}
+        <Analytics />
       </body>
     </html>
   );
