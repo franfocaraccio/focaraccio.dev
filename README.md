@@ -1,6 +1,6 @@
 # focaraccio.dev
 
-Personal CV site for Francisco Focaraccio — Backend Software Engineer.
+Personal CV site for Francisco Focaraccio — Software Engineer.
 
 Bilingual (Spanish / English), dark-first, single page.
 
@@ -12,6 +12,7 @@ Bilingual (Spanish / English), dark-first, single page.
 - [Motion](https://motion.dev) for scroll reveals
 - [next-themes](https://github.com/pacocoursey/next-themes) for the dark/light toggle
 - [Lucide](https://lucide.dev) icons
+- [Vercel Web Analytics](https://vercel.com/docs/analytics) for cookieless page views
 
 ## Getting started
 
