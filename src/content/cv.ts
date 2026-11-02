@@ -179,6 +179,9 @@ export type Dictionary = {
     switchToLight: string;
     languageSwitch: string;
     openMenu: string;
+    closeMenu: string;
+    /** Accessible name of the navigation landmark itself. */
+    mainNav: string;
     skipToContent: string;
   };
 };
@@ -357,6 +360,8 @@ const en: Dictionary = {
     switchToLight: "Switch to light mode",
     languageSwitch: "Change language",
     openMenu: "Open navigation menu",
+    closeMenu: "Close navigation menu",
+    mainNav: "Main navigation",
     skipToContent: "Skip to content",
   },
 };
@@ -536,6 +541,8 @@ const es: Dictionary = {
     switchToLight: "Cambiar a modo claro",
     languageSwitch: "Cambiar idioma",
     openMenu: "Abrir menú de navegación",
+    closeMenu: "Cerrar menú de navegación",
+    mainNav: "Navegación principal",
     skipToContent: "Ir al contenido",
   },
 };
