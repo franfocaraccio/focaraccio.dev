@@ -49,8 +49,8 @@ the repo URL and stack, and each dictionary holds the description under the
 matching key. Adding one means adding the entry plus both descriptions.
 
 When the CV changes, replace the file in `public/cv/` keeping the same name.
-Only an English CV exists, so `hero.resumeHref` is null in the Spanish
-dictionary and the hero omits the download button there.
+A dictionary can set `hero.resumeHref` to null to hide the download button for
+a language that has no CV.
 
 ## Assets
 

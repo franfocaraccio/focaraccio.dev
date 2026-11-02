@@ -242,7 +242,7 @@ const en: Dictionary = {
           "Develop .NET microservices for banking integrations, points-based payment systems and loyalty programs, using event-driven architecture with RabbitMQ on Azure.",
           "Manage SQL Server databases, Azure services (App Services, Azure Functions, Container Apps, Key Vault, API Management) and CI/CD pipelines in Azure DevOps.",
           "Integrated AI coding agents (Claude Code, GitHub Copilot, Cursor) into the development workflow for code generation, refactoring, debugging and code review, with human validation on every change.",
-          "Explored LLM integration patterns for .NET applications: prompt engineering, tool/function calling, structured outputs and agent-based workflows.",
+          "Integrated LLMs into .NET applications: prompt engineering, tool/function calling, structured outputs and agent-based workflows.",
         ],
         stack: [
           "C#",
@@ -391,7 +391,7 @@ const es: Dictionary = {
     greeting: "Hola,",
     resumeCta: "Descargar CV",
     // No Spanish CV exists, so the hero omits the download button entirely.
-    resumeHref: null,
+    resumeHref: "/cv/Francisco-Focaraccio-CV-ES.pdf",
     secondaryCta: "Conocerme mejor",
     scrollHint: "Scroll",
   },
@@ -422,8 +422,8 @@ const es: Dictionary = {
           "Desarrollo de un microservicio de procesamiento de pagos en tiempo real para Visa Offers Platform, que recibe y procesa transacciones de tarjetas Visa.",
           "Desarrollo de microservicios .NET para integraciones bancarias, sistemas de pago por puntos y programas de loyalty, con arquitectura orientada a eventos sobre RabbitMQ en Azure.",
           "Administración de bases de datos SQL Server, servicios de Azure (App Services, Azure Functions, Container Apps, Key Vault, API Management) y pipelines de CI/CD en Azure DevOps.",
-          "Incorporación de agentes de IA (Claude Code, GitHub Copilot, Cursor) al flujo de desarrollo para generación, refactorización, debugging y revisión de código, con validación humana en cada cambio.",
-          "Exploración de patrones de integración de LLM en aplicaciones .NET: prompt engineering, tool/function calling, salidas estructuradas y flujos basados en agentes.",
+          "Incorporación de agentes de IA (Claude Code, GitHub Copilot, Cursor) al flujo de desarrollo para generación, refactorización, debugging y code review, con validación humana en cada cambio.",
+          "Integración de LLMs en aplicaciones .NET: prompt engineering, tool/function calling, structured outputs y workflows basados en agentes.",
         ],
         stack: [
           "C#",
