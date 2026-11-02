@@ -355,7 +355,7 @@ const en: Dictionary = {
   },
   contact: {
     title: "Let's talk",
-    body: "Book a call straight into my calendar, or send me an email.",
+    body: "Book a call in my calendar, or send me an email.",
     cta: "Send an email",
     bookCall: "Book a call",
   },
@@ -536,7 +536,7 @@ const es: Dictionary = {
   },
   contact: {
     title: "Hablemos",
-    body: "Agendá una llamada directo en mi calendario, o escribime un mail.",
+    body: "Agendá una llamada en mi calendario, o escribime un mail.",
     cta: "Enviar un mail",
     bookCall: "Agendar una llamada",
   },
