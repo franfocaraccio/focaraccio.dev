@@ -8,8 +8,7 @@ export const profile = {
   linkedin: "https://www.linkedin.com/in/ffocaraccio",
   github: "https://github.com/franfocaraccio",
   site: "https://focaraccio.dev",
-  photoDark: "/avatar-dark.webp",
-  photoLight: "/avatar-light.webp",
+  photo: "/card-photo.webp",
 } as const;
 
 export type SkillGroup = {
@@ -159,7 +158,14 @@ export type Dictionary = {
     education: string;
     contact: string;
   };
-  about: { paragraphs: string[]; yearsLabel: string };
+  about: {
+    paragraphs: string[];
+    yearsLabel: string;
+    /** Lead-in on the photo card, completed by the name. */
+    intro: string;
+    /** Availability pill on the photo card. */
+    available: string;
+  };
   experience: { items: Experience[]; currentLabel: string };
   projects: {
     /** Keyed by `Project.key`. */
@@ -220,6 +226,8 @@ const en: Dictionary = {
       "I use AI coding agents every day across the development lifecycle, from code generation and refactoring to code review, and I have explored integrating LLM capabilities into the products I build.",
     ],
     yearsLabel: "years of experience",
+    intro: "Hi, I'm",
+    available: "Open to opportunities",
   },
   experience: {
     currentLabel: "Present",
@@ -399,6 +407,8 @@ const es: Dictionary = {
       "Uso agentes de IA todos los días a lo largo del ciclo de desarrollo, desde generación y refactorización de código hasta code review, y exploré la integración de capacidades de LLM en los productos que construyo.",
     ],
     yearsLabel: "años de experiencia",
+    intro: "Hola, soy",
+    available: "Disponible para propuestas",
   },
   experience: {
     currentLabel: "Actualidad",

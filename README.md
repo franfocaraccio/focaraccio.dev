@@ -52,16 +52,14 @@ dictionary and the hero omits the download button there.
 
 ## Assets
 
-- `public/avatar-dark.webp` / `public/avatar-light.webp` — circular portrait,
-  800×800, whose alpha fades radially so the edge dissolves into the page
-  rather than ending on a rim. The falloff starts well outside the head, so the
-  whole face and the shoulders stay opaque.
+- `public/card-photo.webp` — portrait cropped to 4:5, 1000×1250. The light wall
+  it was shot against serves as the photo card's own background, so no
+  background removal is involved. The face sits in the upper half so the name
+  card overlaid at the bottom lands on the shirt.
 
-  Two files because the photo was shot against a light wall. Fading alone melts
-  into a light page but reads as a glowing disc on a dark one, so the dark
-  variant has its highlights pulled down; doing the same in light mode would
-  leave a grey halo instead. No background removal is involved, which is why
-  there are no matting artefacts.
+  The chips drawn over it use the `overlay` colour tokens, which stay dark in
+  both themes: they need contrast against the photo, which is always light,
+  not against the page.
 
   Note that replacing a file without clearing `.next` will keep serving the
   previously optimised version, since Next caches by URL.

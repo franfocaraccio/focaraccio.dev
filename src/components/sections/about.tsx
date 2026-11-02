@@ -3,11 +3,6 @@ import { Portrait } from "@/components/portrait";
 import { Reveal } from "@/components/reveal";
 import { Section } from "@/components/sections/section";
 import { profile, type Dictionary } from "@/content/cv";
-import { yearsOfExperience } from "@/lib/experience";
-
-// Resolved once at module load so the render stays pure. The page is
-// prerendered, so this refreshes on every build.
-const years = yearsOfExperience();
 
 export function About({ dict }: { dict: Dictionary }) {
   return (
@@ -23,13 +18,6 @@ export function About({ dict }: { dict: Dictionary }) {
               {paragraph}
             </p>
           ))}
-
-          <p className="mt-2 flex items-baseline gap-3">
-            <span className="tabular font-mono text-5xl font-semibold text-accent">
-              {years}+
-            </span>
-            <span className="text-sm text-subtle">{dict.about.yearsLabel}</span>
-          </p>
 
           <ul className="mt-4 flex flex-col gap-2 text-sm text-muted">
             <li className="flex items-center gap-3">
@@ -66,7 +54,7 @@ export function About({ dict }: { dict: Dictionary }) {
 
         {/* Photo leads on narrow screens, sits alongside the copy on wide ones. */}
         <Reveal delay={0.1} className="order-first lg:order-none">
-          <Portrait />
+          <Portrait dict={dict} />
         </Reveal>
       </div>
     </Section>
