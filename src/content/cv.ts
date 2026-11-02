@@ -224,9 +224,9 @@ const en: Dictionary = {
   },
   about: {
     paragraphs: [
-      "Senior software engineer with 12 years building software products end to end, from the backend systems that do the heavy lifting to the web apps people use, across fintech, banking and IoT.",
-      "Strongest in the .NET/C# ecosystem: microservices, event-driven architectures and cloud infrastructure on Azure and AWS, with full-stack experience in TypeScript, Angular and React.",
-      "I use AI coding agents every day across the development lifecycle, from code generation and refactoring to code review, and I have explored integrating LLM capabilities into the products I build.",
+      "I'm a senior software engineer with 12 years building software products end to end, from the backend systems that do the heavy lifting to the web apps people use, across fintech, banking and IoT.",
+      "My strongest area is the .NET/C# ecosystem: microservices, event-driven architectures and cloud infrastructure on Azure and AWS, with full-stack experience in TypeScript, Angular and React.",
+      "I use AI coding agents across the development lifecycle, from code generation and refactoring to code review, and I have explored integrating LLM capabilities into the products I build.",
     ],
     yearsLabel: "years of experience",
   },
@@ -355,7 +355,7 @@ const en: Dictionary = {
   },
   contact: {
     title: "Let's talk",
-    body: "I'm open to backend and architecture roles. Book a call straight into my calendar, or send me an email — I read everything.",
+    body: "Book a call straight into my calendar, or send me an email.",
     cta: "Send an email",
     bookCall: "Book a call",
   },
@@ -405,9 +405,9 @@ const es: Dictionary = {
   },
   about: {
     paragraphs: [
-      "Ingeniero de software senior con 12 años construyendo productos de software de punta a punta, desde los sistemas backend que hacen el trabajo pesado hasta las aplicaciones web que la gente usa, en fintech, banca e IoT.",
+      "Soy ingeniero de software senior con 12 años construyendo productos de software de punta a punta, desde los sistemas backend que hacen el trabajo pesado hasta las aplicaciones web que la gente usa, en fintech, banca e IoT.",
       "Mi terreno más sólido es el ecosistema .NET/C#: microservicios, arquitecturas orientadas a eventos e infraestructura cloud en Azure y AWS, con experiencia full stack en TypeScript, Angular y React.",
-      "Uso agentes de IA todos los días a lo largo del ciclo de desarrollo, desde generación y refactorización de código hasta code review, y exploré la integración de capacidades de LLM en los productos que construyo.",
+      "Uso agentes de IA a lo largo del ciclo de desarrollo, desde generación y refactorización de código hasta code review, y exploré la integración de capacidades de LLM en los productos que construyo.",
     ],
     yearsLabel: "años de experiencia",
   },
@@ -536,7 +536,7 @@ const es: Dictionary = {
   },
   contact: {
     title: "Hablemos",
-    body: "Estoy abierto a posiciones de backend y arquitectura. Agendá una llamada directo en mi calendario, o escribime un mail — leo todo.",
+    body: "Agendá una llamada directo en mi calendario, o escribime un mail.",
     cta: "Enviar un mail",
     bookCall: "Agendar una llamada",
   },
