@@ -154,6 +154,8 @@ export type Dictionary = {
     location: string;
     greeting: string;
     resumeCta: string;
+    /** Name of each CV's language, written in the page's language. */
+    resumeLanguages: Record<Locale, string>;
     secondaryCta: string;
     scrollHint: string;
   };
@@ -219,6 +221,7 @@ const en: Dictionary = {
     location: "Buenos Aires, Argentina",
     greeting: "Hello,",
     resumeCta: "Download CV",
+    resumeLanguages: { en: "English", es: "Spanish" },
     secondaryCta: "About me",
     scrollHint: "Scroll",
   },
@@ -399,6 +402,7 @@ const es: Dictionary = {
     location: "Buenos Aires, Argentina",
     greeting: "Hola,",
     resumeCta: "Descargar CV",
+    resumeLanguages: { en: "Inglés", es: "Español" },
     secondaryCta: "Sobre mí",
     scrollHint: "Scroll",
   },

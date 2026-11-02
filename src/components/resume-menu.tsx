@@ -3,7 +3,7 @@
 import { ChevronDown, Download } from "lucide-react";
 import { useEffect, useId, useRef, useState } from "react";
 import { profile } from "@/content/cv";
-import { localeNames, locales } from "@/lib/i18n";
+import { locales, type Locale } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
 
 /**
@@ -11,7 +11,13 @@ import { cn } from "@/lib/utils";
  * page is in. A disclosure rather than an ARIA menu: the options are plain
  * links, so Tab moves through them and they work as links do.
  */
-export function ResumeMenu({ label }: { label: string }) {
+export function ResumeMenu({
+  label,
+  languages,
+}: {
+  label: string;
+  languages: Record<Locale, string>;
+}) {
   const [open, setOpen] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
@@ -82,7 +88,7 @@ export function ResumeMenu({ label }: { label: string }) {
               onClick={() => setOpen(false)}
               className="flex h-11 cursor-pointer items-center justify-between gap-3 rounded-md px-3 text-sm transition-colors duration-200 hover:bg-surface-raised hover:text-accent focus-visible:bg-surface-raised"
             >
-              <span lang={locale}>{localeNames[locale].long}</span>
+              <span>{languages[locale]}</span>
               <span className="font-mono text-[0.6875rem] tracking-wide text-subtle">PDF</span>
             </a>
           </li>

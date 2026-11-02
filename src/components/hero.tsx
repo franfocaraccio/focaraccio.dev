@@ -77,7 +77,7 @@ export function Hero({ dict }: { dict: Dictionary }) {
           >
             {dict.hero.secondaryCta}
           </a>
-          <ResumeMenu label={dict.hero.resumeCta} />
+          <ResumeMenu label={dict.hero.resumeCta} languages={dict.hero.resumeLanguages} />
 
           <ul className="flex items-center gap-1">
             {socials.map(({ href, label, Icon }) => (
