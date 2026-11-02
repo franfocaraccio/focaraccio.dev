@@ -33,7 +33,7 @@ type NavBarProps = {
 /**
  * Fixed to the top of the viewport for the whole page. On wide screens it
  * shows every section inline; on narrow ones the links move into a panel
- * behind a menu button.
+ * behind a menu button at the left end of the bar.
  */
 export function NavBar({ dict, locale }: NavBarProps) {
   const active = useActiveSection(SECTION_IDS);
@@ -132,13 +132,21 @@ export function NavBar({ dict, locale }: NavBarProps) {
           ref={barRef}
           className="mx-auto flex h-16 w-full max-w-[100rem] items-center gap-4 px-4 sm:px-6 lg:px-10"
         >
-          <a
-            href="#home"
-            aria-label={dict.nav.home}
-            className="inline-flex size-9 cursor-pointer items-center justify-center rounded-lg bg-accent text-on-accent lg:hidden"
+          <button
+            ref={buttonRef}
+            type="button"
+            onClick={() => setOpen((value) => !value)}
+            aria-expanded={open}
+            aria-controls={MENU_ID}
+            aria-label={open ? dict.a11y.closeMenu : dict.a11y.openMenu}
+            className="inline-flex size-11 cursor-pointer items-center justify-center rounded-lg border border-border bg-surface text-muted transition-colors duration-200 hover:border-accent hover:text-accent lg:hidden"
           >
-            <Monogram />
-          </a>
+            {open ? (
+              <X className="size-[18px]" strokeWidth={1.75} aria-hidden />
+            ) : (
+              <Menu className="size-[18px]" strokeWidth={1.75} aria-hidden />
+            )}
+          </button>
 
           <nav aria-label={dict.a11y.mainNav} className="hidden min-w-0 flex-1 lg:block">
             <ul className="flex items-center gap-1">
@@ -174,21 +182,6 @@ export function NavBar({ dict, locale }: NavBarProps) {
           <div className="ml-auto flex shrink-0 items-center gap-2">
             <LanguageToggle current={locale} labels={dict.a11y} />
             <ThemeToggle labels={dict.a11y} />
-            <button
-              ref={buttonRef}
-              type="button"
-              onClick={() => setOpen((value) => !value)}
-              aria-expanded={open}
-              aria-controls={MENU_ID}
-              aria-label={open ? dict.a11y.closeMenu : dict.a11y.openMenu}
-              className="inline-flex size-11 cursor-pointer items-center justify-center rounded-lg border border-border bg-surface text-muted transition-colors duration-200 hover:border-accent hover:text-accent lg:hidden"
-            >
-              {open ? (
-                <X className="size-[18px]" strokeWidth={1.75} aria-hidden />
-              ) : (
-                <Menu className="size-[18px]" strokeWidth={1.75} aria-hidden />
-              )}
-            </button>
           </div>
         </div>
       </div>
@@ -243,16 +236,5 @@ export function NavBar({ dict, locale }: NavBarProps) {
         ) : null}
       </AnimatePresence>
     </>
-  );
-}
-
-/** The F monogram from the favicon, drawn in the current text colour. */
-function Monogram() {
-  return (
-    <svg viewBox="0 0 32 32" className="size-6" fill="currentColor" aria-hidden>
-      <rect x="10" y="7" width="12" height="4" rx="1" />
-      <rect x="10" y="13.5" width="8.5" height="4" rx="1" />
-      <rect x="10" y="7" width="4" height="18" rx="1" />
-    </svg>
   );
 }
