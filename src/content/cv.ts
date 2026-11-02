@@ -212,7 +212,7 @@ const en: Dictionary = {
   hero: {
     role: "Software Engineer",
     tagline:
-      "A backend engineer who grew from writing the code into designing the distributed systems that hold it up, without losing the taste for the first part.",
+      "Building software products end to end and designing the systems behind them.",
     location: "Buenos Aires, Argentina",
     greeting: "Hello,",
     resumeCta: "Download CV",
@@ -393,7 +393,7 @@ const es: Dictionary = {
   hero: {
     role: "Ingeniero de Software",
     tagline:
-      "Ingeniero backend que pasó de escribir código a diseñar los sistemas distribuidos que lo sostienen, sin perderle el gusto a lo primero.",
+      "Construyendo productos de software de punta a punta y diseñando los sistemas que los sostienen.",
     location: "Buenos Aires, Argentina",
     greeting: "Hola,",
     resumeCta: "Descargar CV",
