@@ -14,13 +14,14 @@
  * themes stay in sync. `.dark` is toggled on <html> by next-themes.
  */
 :root {
-  --background: #fbfcfd;
-  --surface: #ffffff;
-  --surface-raised: #f4f6f8;
-  --foreground: #0b1015;
-  --muted: #55636f;
-  --subtle: #7c8895;
-  --border: #e3e8ee;
+  /* Light theme runs warm: a cream paper rather than a clinical white. */
+  --background: #faf7f1;
+  --surface: #fffdf8;
+  --surface-raised: #f2eee4;
+  --foreground: #1a1714;
+  --muted: #5f564b;
+  --subtle: #726858;
+  --border: #e6dfd2;
   --accent: #0f766e;
   --accent-soft: #0f766e14;
   --on-accent: #ffffff;

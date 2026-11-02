@@ -57,9 +57,9 @@ dictionary and the hero omits the download button there.
   background removal is involved. The face sits in the upper half so the name
   card overlaid at the bottom lands on the shirt.
 
-  The chips drawn over it use the `overlay` colour tokens, which stay dark in
-  both themes: they need contrast against the photo, which is always light,
-  not against the page.
+  The social chips drawn over it use the `overlay` colour tokens, which stay
+  dark in both themes: they need contrast against the photo, which is always
+  light, not against the page.
 
   Note that replacing a file without clearing `.next` will keep serving the
   previously optimised version, since Next caches by URL.
