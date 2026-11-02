@@ -217,7 +217,7 @@ const en: Dictionary = {
     greeting: "Hello,",
     resumeCta: "Download CV",
     resumeHref: "/cv/Francisco-Focaraccio-CV-EN.pdf",
-    secondaryCta: "Know me better",
+    secondaryCta: "About me",
     scrollHint: "Scroll",
   },
   sections: {
@@ -398,7 +398,7 @@ const es: Dictionary = {
     greeting: "Hola,",
     resumeCta: "Descargar CV",
     resumeHref: "/cv/Francisco-Focaraccio-CV-ES.pdf",
-    secondaryCta: "Conocerme mejor",
+    secondaryCta: "Sobre mí",
     scrollHint: "Scroll",
   },
   sections: {
