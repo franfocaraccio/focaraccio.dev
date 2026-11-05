@@ -2,7 +2,6 @@
 
 import { ChevronDown, Download } from "lucide-react";
 import { useEffect, useId, useRef, useState } from "react";
-import { profile } from "@/content/cv";
 import { locales, type Locale } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
 
@@ -81,7 +80,8 @@ export function ResumeMenu({
         {locales.map((locale) => (
           <li key={locale}>
             <a
-              href={profile.resumes[locale]}
+              // Through the counting route, which redirects to profile.resumes[locale].
+              href={`/api/cv/${locale}`}
               download
               hrefLang={locale}
               type="application/pdf"

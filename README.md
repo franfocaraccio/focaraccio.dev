@@ -38,6 +38,8 @@ a request that asks for no language, or only for ones the site lacks, gets
 | `src/app/globals.css`   | Design tokens for both themes.                                 |
 | `src/app/icon.svg`      | Favicon: an F monogram drawn as rects, no font dependency.     |
 | `public/cv/`            | Downloadable CV PDFs, one per language.                        |
+| `src/app/api/cv/`       | Counts a CV download, then redirects to the PDF.               |
+| `src/app/stats/`        | Private download stats, behind a password.                     |
 
 ## Content updates
 
@@ -52,6 +54,27 @@ matching key. Adding one means adding the entry plus both descriptions.
 When the CV changes, replace the file in `public/cv/` keeping the same name.
 The hero's download button offers every CV listed in `profile.resumes`,
 whichever language the page is in.
+
+## CV download stats
+
+The download links point at `/api/cv/en` and `/api/cv/es`, not at the PDFs.
+That route counts the download in Upstash Redis and redirects to the file;
+counting happens after the response, so a Redis outage never blocks a
+download. Link-preview crawlers and scripts are not counted, and nothing that
+identifies a visitor is stored: only the language, the country Vercel reports
+and the UTC day.
+
+`/stats` shows the totals, by country and by day. The browser asks for a
+password (any username) that must match `STATS_PASSWORD`.
+
+Environment variables, all set in the Vercel project:
+
+| Variable                      | Source                                      |
+| ----------------------------- | ------------------------------------------- |
+| `KV_REST_API_URL`             | Added by the Upstash for Redis integration. |
+| `KV_REST_API_TOKEN`           | Same; used to count.                        |
+| `KV_REST_API_READ_ONLY_TOKEN` | Same; used by `/stats`.                     |
+| `STATS_PASSWORD`              | Set by hand. Without it `/stats` is locked. |
 
 ## Assets
 
