@@ -1,5 +1,6 @@
 import { headers } from "next/headers";
 import { notFound } from "next/navigation";
+import { getDictionary } from "@/content/cv";
 import { readDownloadStats, type DownloadStats } from "@/lib/cv-downloads";
 import { localeNames, locales, type Locale } from "@/lib/i18n";
 import { isStatsAuthorized } from "@/lib/stats-auth";
@@ -7,6 +8,9 @@ import { isStatsAuthorized } from "@/lib/stats-auth";
 const DAYS = 30;
 
 const regionNames = new Intl.DisplayNames(["es"], { type: "region" });
+
+/** Language names in Spanish, the page's language, rather than in each language's own. */
+const languageNames = getDictionary("es").hero.resumeLanguages;
 
 function countryName(code: string) {
   if (code === "XX") return "Desconocido";
@@ -40,8 +44,10 @@ export default async function StatsPage() {
   }
 
   const total = sum(stats.totals);
-  const lastDays = stats.daily.reduce((acc, { counts }) => acc + sum(counts), 0);
-  const busiestDay = Math.max(1, ...stats.daily.map(({ counts }) => sum(counts)));
+  // Only days with downloads; the gaps between dates show the quiet ones.
+  const activeDays = stats.daily.filter(({ counts }) => sum(counts) > 0);
+  const lastDays = activeDays.reduce((acc, { counts }) => acc + sum(counts), 0);
+  const busiestDay = Math.max(1, ...activeDays.map(({ counts }) => sum(counts)));
 
   return (
     <main className="mx-auto max-w-3xl px-4 py-12 sm:px-6">
@@ -53,7 +59,7 @@ export default async function StatsPage() {
       <section className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4">
         <Stat label="Total" value={total} />
         {locales.map((l) => (
-          <Stat key={l} label={localeNames[l].long} value={stats.totals[l]} />
+          <Stat key={l} label={languageNames[l]} value={stats.totals[l]} />
         ))}
         <Stat label={`Últimos ${DAYS} días`} value={lastDays} />
       </section>
@@ -105,7 +111,7 @@ export default async function StatsPage() {
           <Empty />
         ) : (
           <ul className="text-sm">
-            {stats.daily.map(({ day, counts }) => {
+            {activeDays.map(({ day, counts }) => {
               const dayTotal = sum(counts);
               return (
                 <li
