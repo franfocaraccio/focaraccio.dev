@@ -61,11 +61,12 @@ The download links point at `/api/cv/en` and `/api/cv/es`, not at the PDFs.
 That route counts the download in Upstash Redis and redirects to the file;
 counting happens after the response, so a Redis outage never blocks a
 download. Link-preview crawlers and scripts are not counted, and nothing that
-identifies a visitor is stored: only the language, the country Vercel reports
-and the UTC day.
+identifies a visitor is stored: only the time, the language, and the country
+and city Vercel reports.
 
-`/stats` shows the totals, by country and by day. The browser asks for a
-password (any username) that must match `STATS_PASSWORD`.
+`/stats` shows the totals, a breakdown by country and the latest 1,000
+downloads one by one, with times in UTC-3. The browser asks for a password
+(any username) that must match `STATS_PASSWORD`.
 
 Environment variables, all set in the Vercel project:
 

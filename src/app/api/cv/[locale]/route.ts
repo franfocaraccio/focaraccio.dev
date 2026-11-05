@@ -14,9 +14,14 @@ export async function GET(request: NextRequest, ctx: RouteContext<"/api/cv/[loca
 
   const counted = request.method === "GET" && !isBot(request.headers.get("user-agent"));
   if (counted) {
-    const country = request.headers.get("x-vercel-ip-country") ?? "XX";
+    const download = {
+      at: new Date().toISOString(),
+      locale,
+      country: request.headers.get("x-vercel-ip-country") ?? "XX",
+      city: decodeHeader(request.headers.get("x-vercel-ip-city")),
+    };
     after(() =>
-      recordDownload(locale, country).catch((error) =>
+      recordDownload(download).catch((error) =>
         console.error("Could not record CV download", error),
       ),
     );
@@ -26,4 +31,14 @@ export async function GET(request: NextRequest, ctx: RouteContext<"/api/cv/[loca
   // Every click has to reach this handler to be counted.
   response.headers.set("Cache-Control", "no-store");
   return response;
+}
+
+/** Vercel URL-encodes the city name so it can carry non-ASCII characters. */
+function decodeHeader(value: string | null) {
+  if (!value) return null;
+  try {
+    return decodeURIComponent(value);
+  } catch {
+    return value;
+  }
 }

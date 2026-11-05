@@ -5,7 +5,18 @@ import { readDownloadStats, type DownloadStats } from "@/lib/cv-downloads";
 import { localeNames, locales, type Locale } from "@/lib/i18n";
 import { isStatsAuthorized } from "@/lib/stats-auth";
 
-const DAYS = 30;
+/** Argentina's zone: UTC-3 all year, with no daylight saving time. */
+const timeFormat = new Intl.DateTimeFormat("es-AR", {
+  timeZone: "America/Argentina/Buenos_Aires",
+  day: "2-digit",
+  month: "2-digit",
+  year: "numeric",
+  hour: "2-digit",
+  minute: "2-digit",
+  hour12: false,
+});
+
+const formatTime = (iso: string) => timeFormat.format(new Date(iso));
 
 const regionNames = new Intl.DisplayNames(["es"], { type: "region" });
 
@@ -32,7 +43,7 @@ export default async function StatsPage() {
 
   let stats: DownloadStats;
   try {
-    stats = await readDownloadStats(DAYS);
+    stats = await readDownloadStats();
   } catch (error) {
     console.error("Could not read CV download stats", error);
     return (
@@ -44,10 +55,6 @@ export default async function StatsPage() {
   }
 
   const total = sum(stats.totals);
-  // Only days with downloads; the gaps between dates show the quiet ones.
-  const activeDays = stats.daily.filter(({ counts }) => sum(counts) > 0);
-  const lastDays = activeDays.reduce((acc, { counts }) => acc + sum(counts), 0);
-  const busiestDay = Math.max(1, ...activeDays.map(({ counts }) => sum(counts)));
 
   return (
     <main className="mx-auto max-w-3xl px-4 py-12 sm:px-6">
@@ -56,12 +63,11 @@ export default async function StatsPage() {
         Clicks en el botón de descarga de focaraccio.dev, sin contar bots.
       </p>
 
-      <section className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4">
+      <section className="mt-8 grid grid-cols-3 gap-3">
         <Stat label="Total" value={total} />
         {locales.map((l) => (
           <Stat key={l} label={languageNames[l]} value={stats.totals[l]} />
         ))}
-        <Stat label={`Últimos ${DAYS} días`} value={lastDays} />
       </section>
 
       <Card title="Países">
@@ -84,13 +90,7 @@ export default async function StatsPage() {
               {stats.countries.map(({ code, counts, total: countryTotal }) => (
                 <tr key={code} className="border-t border-border">
                   <td className="py-2">
-                    {/* The code rather than a flag emoji, which Windows renders as two letters anyway. */}
-                    <span
-                      aria-hidden
-                      className="mr-2 inline-block w-7 rounded border border-border text-center font-mono text-[0.625rem] text-subtle"
-                    >
-                      {code === "XX" ? "··" : code}
-                    </span>
+                    <CountryCode code={code} />
                     {countryName(code)}
                   </td>
                   {locales.map((l) => (
@@ -106,35 +106,48 @@ export default async function StatsPage() {
         )}
       </Card>
 
-      <Card title={`Por día (UTC, últimos ${DAYS})`}>
-        {lastDays === 0 ? (
+      <Card title="Descargas">
+        {stats.downloads.length === 0 ? (
           <Empty />
         ) : (
-          <ul className="text-sm">
-            {activeDays.map(({ day, counts }) => {
-              const dayTotal = sum(counts);
-              return (
-                <li
-                  key={day}
-                  className="grid grid-cols-[6.5rem_1fr_auto] items-center gap-3 border-t border-border py-1.5 first:border-t-0"
-                >
-                  <span className="font-mono text-xs text-muted">{day}</span>
-                  <span className="h-2 overflow-hidden rounded-full bg-surface-raised">
-                    <span
-                      className="block h-full rounded-full bg-accent"
-                      style={{ width: `${(dayTotal / busiestDay) * 100}%` }}
-                    />
-                  </span>
-                  <span className="w-28 text-right tabular-nums text-muted">
-                    {locales.map((l) => `${localeNames[l].short} ${counts[l]}`).join(" · ")}
-                  </span>
-                </li>
-              );
-            })}
-          </ul>
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="text-left font-mono text-[0.6875rem] tracking-wide text-subtle uppercase">
+                <th className="py-2 pr-3 font-medium">Fecha y hora (UTC-3)</th>
+                <th className="py-2 pr-3 font-medium">Lugar</th>
+                <th className="py-2 text-right font-medium">Idioma</th>
+              </tr>
+            </thead>
+            <tbody>
+              {stats.downloads.map(({ at, locale, country, city }, index) => (
+                <tr key={`${at}-${index}`} className="border-t border-border">
+                  <td className="py-2 pr-3 font-mono text-xs whitespace-nowrap text-muted">
+                    <time dateTime={at}>{formatTime(at)}</time>
+                  </td>
+                  <td className="py-2 pr-3">
+                    <CountryCode code={country} />
+                    {city ? `${city}, ${countryName(country)}` : countryName(country)}
+                  </td>
+                  <td className="py-2 text-right">{languageNames[locale]}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         )}
       </Card>
     </main>
+  );
+}
+
+/** The code rather than a flag emoji, which Windows renders as two letters anyway. */
+function CountryCode({ code }: { code: string }) {
+  return (
+    <span
+      aria-hidden
+      className="mr-2 inline-block w-7 rounded border border-border text-center font-mono text-[0.625rem] text-subtle"
+    >
+      {code === "XX" ? "··" : code}
+    </span>
   );
 }
 
